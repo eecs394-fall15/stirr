@@ -6,19 +6,22 @@ angular
 
     $scope.dishes = [
        {
-           name: 'Tomato soup',
-           prepTime: '1 hour',
-           author: 'Pooja'
+         name: 'Tomato soup',
+         icon: 'http://dingo.care2.com/pictures/greenliving/4/3519.large.jpg',
+         prepTime: '1 hour',
+         author: 'Pooja'
        },
        {
-           name: 'Ramen',
-           prepTime: '2 hour',
-           author: 'Adrian'
+         name: 'Ramen',
+         icon: 'http://dingo.care2.com/pictures/greenliving/4/3519.large.jpg',
+         prepTime: '2 hour',
+         author: 'Adrian'
        },
        {
-           name: 'Rice',
-           prepTime: '1.5 hour',
-           author: 'Benjamin'
+         name: 'Rice',
+         icon: 'http://dingo.care2.com/pictures/greenliving/4/3519.large.jpg',
+         prepTime: '1.5 hour',
+         author: 'Benjamin'
        }
     ];
 
