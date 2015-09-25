@@ -5,5 +5,8 @@
   "quotmark": "single",
   "maxlen": 80,
   "trailing": true,
-  "curly": true
+  "curly": true,
+  "globals": {
+    "angular": true
+  }
 }
