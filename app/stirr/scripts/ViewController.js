@@ -4,4 +4,22 @@ angular
 
     $scope.navbarTitle = "View";
 
+    $scope.dishes = [
+       {
+           name: "Tomato soup",
+           prepTime: "1 hour",
+           author: "Pooja"
+       },
+       {
+           name: "Ramen",
+           prepTime: "2 hour",
+           author: "Adrian"
+       },
+       {
+           name: "Ramen",
+           prepTime: "1.5 hour",
+           author: "Benjamin"
+       }
+    ];
+
   });
