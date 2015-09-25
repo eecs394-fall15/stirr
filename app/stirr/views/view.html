@@ -8,7 +8,7 @@
 
   <h1>Here are all the current dishes: </h1>
   <div ng-repeat="dish in dishes">
-    <img src="{{ dish.icon }}">
+    <img ng-src="{{ dish.icon }}" ng-if="dish.icon">
     <h1>{{ dish.name }}</h1>
     <h2>{{ dish.prepTime }}</h2>
     <h2>{{ dish.author }}</h2>
