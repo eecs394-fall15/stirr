@@ -7,12 +7,12 @@ module.exports =
     {
       title: "Index"
       id: "index"
-      location: "example#getting-started" # Supersonic module#view type navigation
+      location: "stirr#getting-started" # Supersonic module#view type navigation
     }
     {
       title: "Settings"
       id: "settings"
-      location: "example#settings"
+      location: "stirr#settings"
     }
     {
       title: "Internet"
@@ -22,27 +22,27 @@ module.exports =
   ]
 
   # rootView:
-  #   location: "example#getting-started"
+  #   location: "stirr#getting-started"
 
   preloads: [
     {
       id: "learn-more"
-      location: "example#learn-more"
+      location: "stirr#learn-more"
     }
     {
       id: "using-the-scanner"
-      location: "example#using-the-scanner"
+      location: "stirr#using-the-scanner"
     }
   ]
 
   # drawers:
   #   left:
   #     id: "leftDrawer"
-  #     location: "example#drawer"
+  #     location: "stirr#drawer"
   #     showOnAppLoad: false
   #   options:
   #     animation: "swingingDoor"
   #
   # initialView:
   #   id: "initialView"
-  #   location: "example#initial-view"
+  #   location: "stirr#initial-view"
