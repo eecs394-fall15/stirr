@@ -16,7 +16,7 @@ angular
            author: "Adrian"
        },
        {
-           name: "Ramen",
+           name: "Rice",
            prepTime: "1.5 hour",
            author: "Benjamin"
        }

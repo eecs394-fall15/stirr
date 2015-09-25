@@ -2,10 +2,12 @@
 
   <super-navbar>
     <super-navbar-title>
-      Edit Dish
+      {{ navbarTitle }}
     </super-navbar-title>
   </super-navbar>
 
   <h1>Let's edit a dish</h1>
+
+  <h3 ng-repeat="dish in dishes">{{ dish }}</h3>
 
 </div>

@@ -4,4 +4,6 @@ angular
 
     $scope.navbarTitle = "Edit";
 
+    $scope.dishes = ["Tomato Soup", "Ramen", "Rice"];
+
   });
