@@ -5,6 +5,6 @@ angular
     $scope.navbarTitle = "Home";
     $scope.pageTitle = "Welcome to stirr";
 
-    $scope.teamMembers = ["Adrian", "Benjamin", "Kapil", "Pooja"];
+    $scope.teamMembers = ["Adrien", "Benjamin", "Kapil", "Pooja"];
 
   });
