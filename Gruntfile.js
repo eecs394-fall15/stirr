@@ -11,10 +11,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint")
   grunt.loadNpmTasks("grunt-steroids");
   grunt.registerTask("default", [
-    "jshint",
-    "jscs",
     "steroids-make-fresh"
   ]);
+
+  grunt.registerTask("lint", [
+    "jshint",
+    "jscs",
+  ]);
+
   grunt.initConfig({
     jscs: {
       options: {
