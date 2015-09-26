@@ -1,0 +1,42 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title>
+      Show
+    </super-navbar-title>
+  </super-navbar>
+
+  <div class="padding">
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+      <h2 ng-bind="recipe['actions']"></h2>
+      
+      
+      
+       <p>createdAt: <span ng-bind="recipe['createdAt']"></span></p> 
+      
+       <p>description: <span ng-bind="recipe['description']"></span></p> 
+      
+       <p>image: <span ng-bind="recipe['image']"></span></p> 
+      
+       <p>ingredients: <span ng-bind="recipe['ingredients']"></span></p> 
+      
+       <p>name: <span ng-bind="recipe['name']"></span></p> 
+      
+       <p>objectId: <span ng-bind="recipe['objectId']"></span></p> 
+      
+       <p>updatedAt: <span ng-bind="recipe['updatedAt']"></span></p> 
+      
+
+
+      <super-modal-show location="recipe#edit?id={{ recipe.id }}">
+        <button class="button button-block button-positive">
+          Edit
+        </button>
+      </super-modal-show>
+
+      <button ng-click="remove(recipe.id)" class="button button-block button-negative">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
