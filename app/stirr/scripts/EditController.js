@@ -4,6 +4,11 @@ angular
 
     $scope.navbarTitle = 'Edit';
 
-    $scope.dishes = ['Tomato Soup', 'Ramen', 'Rice'];
+    $scope.dish = {
+                    name: 'Tomato soup',
+                    icon: '/tomato-soup.jpg',
+                    prepTime: '1 hour',
+                    author: 'Pooja'
+                  };
 
   });
