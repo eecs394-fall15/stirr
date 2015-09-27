@@ -7,31 +7,30 @@ Licensed under the MIT license.
 */
 
 module.exports = function(grunt) {
-  grunt.loadNpmTasks("grunt-jscs");
-  grunt.loadNpmTasks("grunt-contrib-jshint")
-  grunt.loadNpmTasks("grunt-steroids");
-  grunt.registerTask("default", [
-    "steroids-make-fresh"
-  ]);
-
-  grunt.registerTask("lint", [
-    "jshint",
-    "jscs",
+  grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-contrib-jshint')
+  grunt.loadNpmTasks('grunt-steroids');
+  grunt.registerTask('default', [
+    'jshint',
+    'jscs',
+    'steroids-make-fresh'
   ]);
 
   grunt.initConfig({
     jscs: {
       options: {
-        config: ".jscsrc",
+        config: '.jscsrc',
+        force: true,
         verbose: true
       },
-      src: ["app/**/*.js"]
+      src: ['app/stirr/**/*.js']
     },
     jshint: {
       options: {
-        jshintrc: ".jshintrc"
+        force: true,
+        jshintrc: '.jshintrc'
       },
-      src: ["app/**/*.js"]
+      src: ['app/stirr/**/*.js']
     },
   });
 }
