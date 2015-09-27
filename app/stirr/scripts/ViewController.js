@@ -1,6 +1,6 @@
 angular
   .module('stirr')
-  .controller('ViewController', function($scope, supersonic) {
+  .controller('ViewController', function($scope, Recipe, supersonic) {
 
     $scope.navbarTitle = 'View';
 

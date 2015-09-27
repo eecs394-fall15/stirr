@@ -1,6 +1,6 @@
 angular
   .module('stirr')
-  .controller('EditController', function($scope, supersonic) {
+  .controller('EditController', function($scope, Recipe, supersonic) {
 
     $scope.navbarTitle = 'Edit';
 
