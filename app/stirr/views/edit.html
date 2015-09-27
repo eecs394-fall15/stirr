@@ -3,10 +3,11 @@
   <super-navbar>
     <super-navbar-title>
       <!-- THIS STILL ISN'T WORKING UGH -->
-      Edit {{ dish }}
+      Edit {{ recipe.name }}
     </super-navbar-title>
   </super-navbar>
 
+  <p>{{ recipe.name }}</p>
   <img ng-src="{{ dish.icon }}" ng-if="dish.icon">
   <img src="/food-placeholder.png" ng-if="!dish.icon">
 
