@@ -2,12 +2,13 @@
 
   <super-navbar>
     <super-navbar-title>
-      Edit
+      <!-- THIS STILL ISN'T WORKING UGH -->
+      Edit {{ recipe.name }}
     </super-navbar-title>
   </super-navbar>
 
-  <h1>Let's edit a dish</h1>
-
-  <h3 ng-repeat="dish in dishes">{{ dish }}</h3>
+  <p>{{ recipe.name }}</p>
+  <img ng-src="{{ dish.icon }}" ng-if="dish.icon">
+  <img src="/food-placeholder.png" ng-if="!dish.icon">
 
 </div>
