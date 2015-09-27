@@ -2,35 +2,59 @@
 
   <super-navbar>
     <super-navbar-title>
-      <!-- THIS STILL ISN'T WORKING UGH -->
-      Edit recipe
+      Edit Recipe
     </super-navbar-title>
   </super-navbar>
 
-  <p>{{ recipe.name }}</p>
-  <p>{{ recipe.description.description }}</p>
-  <p>By {{ recipe.description.authorName }}</p>
-  <div ng-repeat="action in recipe.actions.instructions">
-    <p>Step {{ $index + 1}} <br> {{ action }}</p>
-  </div>
-  <!-- <p ng-repeat="action in recipe.actions.instructions">{{ action }}</p> -->
   <img class="image" ng-src="{{ recipe.image.url }}" ng-if="recipe.image">
   <img class="image" src="/food-placeholder.png" ng-if="!recipe.image">
 
-  <form name="editRecipe" ng-submit="submitForm()" novalidate>
-    <!-- NAME -->
-    <!-- <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
-      <label>Name</label>
-      <input type="text" name="name" class="form-control" ng-model="recipe.name" required>
-      <p ng-show="editRecipe.name.$invalid && !userForm.name.$pristine" class="help-block">Name is required.</p>
+<!--   <div class="edit-text">
+    <p>{{ recipe.name }}</p>
+    <p>{{ recipe.description.description }}</p>
+    <p>By {{ recipe.description.authorName }}</p>
+    <div ng-repeat="action in recipe.actions.instructions">
+      <p>Step {{ $index + 1 }} <br> {{ action }}</p>
     </div> -->
 
-
-    <div class="list">
-      <label class="item item-input">
-        <input type="text" name="name" ng-model="recipe.name" placeholder="Recipe Name">
-      </label>
+    <div class="card">
+      <div class="item item-divider">
+        Recipe Information
+      </div>
+      <div class="item list">
+        <label class="item item-input">
+          <span class="input-label">Recipe Name:</span>
+          <input ng-if="recipe.name" type="text" name="name" ng-model="recipe.name" placeholder="{{ recipe.name }}">
+          <input ng-if="!recipe.name" type="text" name="name" ng-model="recipe.name" placeholder="Enter name here">  
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Author:</span>
+          <input ng-if="recipe.description.authorName" type="text" name="authorName" ng-model="recipe.description.authorName" placeholder="{{ recipe.description.authorName }}">
+          <input ng-if="!recipe.description.authorName" type="text" name="authorName" ng-model="recipe.description.authorName" placeholder="Enter author name here">
+        </label>
+      </div>
     </div>
+
+
+    <form name="editRecipe" ng-submit="submitForm()" novalidate>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Recipe Name</span>
+          <input ng-if="recipe.name" type="text" name="name" ng-model="recipe.name" placeholder="{{ recipe.name }}">
+<!--           <input ng-if="!recipe.name" type="text" name="name" ng-model="recipe.name" placeholder="">
+ -->        
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Author</span>
+          <input type="text" name="authorName" ng-model="recipe.description.authorName" placeholder="{{ recipe.description.authorName }}">
+        </label>
+        <!-- <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="text" name="name" ng-model="recipe.name" placeholder="john@suhr.com">
+        </label> -->
+      </div>
+    </form>
+  </div>
 
 
 </div>

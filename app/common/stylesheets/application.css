@@ -4,6 +4,14 @@
   font-weight: 600;
 }
 
+.padding {
+  padding: 0px;
+}
+
 .image {
   width: 100%;
+}
+
+.edit-text .input {
+  font-size: 12px;
 }
