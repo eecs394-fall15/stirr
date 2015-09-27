@@ -14,4 +14,8 @@ module.exports =
   		id: "edit-dishes"
   		location: "stirr#edit"
   	}
+    {
+      id: "new-home"
+      location: "stirr#new-home"
+    }
   ]
