@@ -8,15 +8,23 @@
   </super-navbar>
 
   <p>{{ recipe.name }}</p>
-  <img class="image" ng-src="{{ dish.icon }}" ng-if="recipe.image">
+  <img class="image" ng-src="{{ recipe.image.url }}" ng-if="recipe.image">
   <img class="image" src="/food-placeholder.png" ng-if="!recipe.image">
 
   <form name="editRecipe" ng-submit="submitForm()" novalidate>
     <!-- NAME -->
-    <div class="form-group">
+    <!-- <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
       <label>Name</label>
       <input type="text" name="name" class="form-control" ng-model="recipe.name" required>
-      <!-- <p ng-show="editRecipe.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p> -->
+      <p ng-show="editRecipe.name.$invalid && !userForm.name.$pristine" class="help-block">Name is required.</p>
+    </div> -->
+
+
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" name="name" ng-model="recipe.name" placeholder="Recipe Name">
+      </label>
     </div>
+
 
 </div>
