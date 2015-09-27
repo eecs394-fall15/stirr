@@ -88,3 +88,5 @@ build/Release
 node_modules
 bower_components
 
+# Sublime Text
+*.sublime-workspace
