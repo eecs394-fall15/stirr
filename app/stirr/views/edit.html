@@ -8,8 +8,10 @@
   </super-navbar>
 
   <p>{{ recipe.name }}</p>
+  <p>{{ recipe.description.description }}</p>
+  <p>By {{ recipe.description.authorName }}</p>
   <div ng-repeat="action in recipe.actions.instructions">
-    <p>{{ action }}</p>
+    <p>Step {{ $index + 1}} <br> {{ action }}</p>
   </div>
   <!-- <p ng-repeat="action in recipe.actions.instructions">{{ action }}</p> -->
   <img class="image" ng-src="{{ recipe.image.url }}" ng-if="recipe.image">
