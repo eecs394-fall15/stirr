@@ -28,8 +28,8 @@
 //   });
 
 angular
-  .module('recipe')
-  .controller("ShowController", function ($scope, Recipe, supersonic) {
+  .module('stirr')
+  .controller('ViewController', function ($scope, Recipe, supersonic) {
     $scope.recipe = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
@@ -41,7 +41,7 @@ angular
           $scope.showSpinner = false;
         });
       });
-    }
+    };
 
     supersonic.ui.views.current.whenVisible( function () {
       if ( $scope.dataId ) {
@@ -59,5 +59,5 @@ angular
       $scope.recipe.delete().then( function () {
         supersonic.ui.layers.pop();
       });
-    }
+    };
   });

@@ -1,3 +1,3 @@
 angular
-  .module('recipe')
+  .module('stirr')
   .constant('Recipe', supersonic.data.model('Recipe'));
