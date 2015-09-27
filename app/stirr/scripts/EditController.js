@@ -19,14 +19,22 @@ angular
     $scope.recipe = null;
     $scope.showSpinner = true;
 
-    // for now, while we don't have a home or view page
-    var id = 'lLodrIigiW';
-    Recipe.find(id).then(function(recipe) {
-      $scope.$apply(function() {
-        $scope.recipe = recipe;
-        $scope.showSpinner = false;
-      });
+    supersonic.ui.views.current.whenVisible(function() {
+      _refreshViewData();
     });
+
+    var _refreshViewData = function() {
+      // for now, while we don't have a home or view page
+      var id = 'lLodrIigiW';
+
+      Recipe.find(id).then(function(recipe) {
+        $scope.$apply(function() {
+          $scope.recipe = recipe;
+          $scope.showSpinner = false;
+        });
+        $scope.apply();
+      });
+    };
 
     // // Fetch an object based on id from the database
     // Recipe.find(steroids.view.params.id).then(function(recipe) {
@@ -41,6 +49,10 @@ angular
       $scope.recipe.save().then(function() {
         supersonic.ui.modal.hide();
       });
+
+      // update recipe page
+      _refreshViewData();
+
     };
 
     $scope.cancel = function() {
