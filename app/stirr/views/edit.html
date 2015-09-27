@@ -3,12 +3,16 @@
   <super-navbar>
     <super-navbar-title>
       <!-- THIS STILL ISN'T WORKING UGH -->
-      Edit {{ recipe.name }}
+      Edit recipe
     </super-navbar-title>
   </super-navbar>
 
   <p>{{ recipe.name }}</p>
-  <img class="image" ng-src="{{ dish.icon }}" ng-if="recipe.image">
+  <div ng-repeat="action in recipe.actions.instructions">
+    <p>{{ action }}</p>
+  </div>
+  <!-- <p ng-repeat="action in recipe.actions.instructions">{{ action }}</p> -->
+  <img class="image" ng-src="{{ recipe.image.url }}" ng-if="recipe.image">
   <img class="image" src="/food-placeholder.png" ng-if="!recipe.image">
 
   <form name="editRecipe" ng-submit="submitForm()" novalidate>
