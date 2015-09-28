@@ -3,6 +3,7 @@
   "undef": true,
   "curly": true,
   "globals": {
-    "angular": true
+    "angular": true,
+    "supersonic": true
   }
 }
