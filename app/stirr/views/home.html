@@ -1,3 +1,9 @@
+<style>
+.card .item.stirr-head{
+  font-size: 2.0em;
+}
+</style>
+
 <div class="padding" ng-controller="HomeController">
 
   <super-navbar>
@@ -20,16 +26,16 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
-    <ul class="list" ng-hide="recipes.length == 0">
-
-      <super-navigate location="recipe#show" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
-        <li class="item item-icon-right">
-          <span ng-bind="recipe['actions']"></span>
-          <i class="icon super-ios-arrow-right"></i>
-        </li>
-      </super-navigate>
-
-    </ul>
+    <super-navigate location="recipe#show" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+      <div class="list card">
+        <div class="item stirr-head padding">
+          {{ recipe['name'] }}
+        </div>
+        <div ng-show="recipe['image']" class="item item-image">
+          <img src="/tomatosoup.jpg">
+        </div>
+      </div>
+    </super-navigate>
 
     <h4 ng-show="recipes.length == 0" class="assertive padding">
       No recipes found. Create one?
