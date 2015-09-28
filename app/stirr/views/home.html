@@ -26,13 +26,13 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
-    <super-navigate location="recipe#show" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+    <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
       <div class="list card">
         <div class="item stirr-head padding">
           {{ recipe['name'] }}
         </div>
         <div ng-show="recipe['image']" class="item item-image">
-          <img src="/tomatosoup.jpg">
+          <img ng-src="{{ recipe['image'].url }}">
         </div>
       </div>
     </super-navigate>
