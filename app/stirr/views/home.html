@@ -1,3 +1,9 @@
+<style>
+.card .item.stirr-head{
+  font-size: 2.0em;
+}
+</style>
+
 <div class="padding" ng-controller="HomeController">
 
   <super-navbar>
@@ -5,11 +11,6 @@
       stirr
     </super-navbar-title>
   </super-navbar>
-
-
-  <h1>{{ pageTitle }}</h1>
-
-  <p>stirr is an app that helps inspire creative cooking by allowing users to quickly and easily generate innovative recipes and make mouthwatering alterations to existing ones.</p>
 
   <super-navigate view-id="view-dishes">
     <button class="button button-block button-positive icon-left super-wand">View Current Dishes</button>
@@ -23,7 +24,28 @@
     <button class="button button-block button-positive icon-left super-wand">View Recipes</button>
   </super-navigate>
 
-  <h2>Get in touch with the developers! Built by: </h2>
-  <h4 ng-repeat="member in teamMembers"> {{ member }}</h4>
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+      <div class="list card">
+        <div class="item stirr-head padding">
+          {{ recipe['name'] }}
+        </div>
+        <div ng-show="recipe['image']" class="item item-image">
+          <img ng-src="{{ recipe['image'].url }}">
+        </div>
+      </div>
+    </super-navigate>
+
+    <h4 ng-show="recipes.length == 0" class="assertive padding">
+      No recipes found. Create one?
+    </h4>
+
+    <super-modal-show location="recipe#new">
+      <button class="button button-full button-positive">
+        Create a new recipe
+      </button>
+    </super-modal-show>
+  </div>
 
 </div>
