@@ -53,10 +53,10 @@
       <div class="item item-divider">
         Instructions
       </div>
-      <div class="item list" ng-repeat="instruction in recipe.actions.instructions">
+      <div class="item list" ng-repeat="action in recipe.actions">
         <label class="item item-input">
           <span class="input-label">Step {{ $index + 1 }}:</span>
-          <input type="text" name="instructions[]" ng-model="instruction" placeholder="Enter instructions">
+          <input type="text" name="step" ng-model="action.step" placeholder="Enter instructions">
         </label>
       </div>
     </div>
