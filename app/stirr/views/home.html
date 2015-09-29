@@ -1,9 +1,3 @@
-<style>
-.card .item.stirr-head {
-  font-size: 2.0em;
-}
-</style>
-
 <div class="padding" ng-controller="HomeController">
 
   <super-navbar>
@@ -12,7 +6,7 @@
     </super-navbar-title>
   </super-navbar>
 
-  <super-navigate view-id="view-dishes">
+<!--   <super-navigate view-id="view-dishes">
     <button class="button button-block button-positive icon-left super-wand">View Current Dishes</button>
   </super-navigate>
 
@@ -22,14 +16,15 @@
 
   <super-navigate view-id="recipe#index">
     <button class="button button-block button-positive icon-left super-wand">View Recipes</button>
-  </super-navigate>
+  </super-navigate> -->
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
-      <div class="list card">
+      <div class="position-relative">
         <div class="item stirr-head padding">
-          {{ recipe['name'] }}
+          <h1>{{ recipe.name }}</h1>
+          <h2>By {{ recipe.description.authorName }}</h2>
         </div>
         <div ng-show="recipe['image']" class="item item-image">
           <img ng-src="{{ recipe['image'].url }}">
@@ -41,11 +36,11 @@
       No recipes found. Create one?
     </h4>
 
-    <super-modal-show location="recipe#new">
+    <!-- <super-modal-show location="recipe#new">
       <button class="button button-full button-positive">
         Create a new recipe
       </button>
-    </super-modal-show>
+    </super-modal-show> -->
   </div>
 
 </div>
