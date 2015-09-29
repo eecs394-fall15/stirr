@@ -1,16 +1,9 @@
 <div class="padding" ng-controller="EditController">
-
-  <super-navbar>
-    <super-navbar-title>
-      Edit Recipe
-    </super-navbar-title>
-  </super-navbar>
-
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <img class="image" ng-src="{{ recipe.image.url }}" ng-show="recipe.image">
     <img class="image" src="/food-placeholder.png" ng-hide="recipe.image">
-    <form name="editRecipe" ng-submit="submitForm()" novalidate>
+    <form>
       <div class="card">
         <div class="item item-divider">
           Recipe Information
@@ -18,7 +11,7 @@
         <div class="item list">
           <label class="item item-input">
             <span class="input-label">Recipe Name:</span>
-            <input type="text" name="name" ng-model="recipe.name" placeholder="Enter name">  
+            <input type="text" name="name" ng-model="recipe.name" placeholder="Enter name">
           </label>
           <label class="item item-input">
             <span class="input-label">Author:</span>
