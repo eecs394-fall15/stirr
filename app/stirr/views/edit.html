@@ -6,8 +6,10 @@
     </super-navbar-title>
   </super-navbar>
 
-  <img class="image" ng-src="{{ recipe.image.url }}" ng-if="recipe.image">
-  <img class="image" src="/food-placeholder.png" ng-if="!recipe.image">
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+  <img class="image" ng-src="{{ recipe.image.url }}" ng-show="recipe.image">
+  <img class="image" src="/food-placeholder.png" ng-hide="recipe.image">
 
   <form name="editRecipe" ng-submit="submitForm()" novalidate>
 
@@ -62,5 +64,6 @@
     </div>
 
   </form>
+  </div>
 
 </div>
