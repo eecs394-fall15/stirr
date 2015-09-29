@@ -24,7 +24,7 @@
       <div class="position-relative">
         <div class="item stirr-head padding">
           <h1>{{ recipe.name }}</h1>
-          <h2>By {{ recipe.description.authorName }}</h2>
+          <h2>By {{ recipe.author }}</h2>
         </div>
         <div ng-show="recipe.image" class="item item-image">
           <img ng-src="{{ recipe.image.url }}">

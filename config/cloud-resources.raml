@@ -16,8 +16,8 @@ traits:
             default: 80114
   
 schemas:
-  - Recipe_collection: '{"$schema":"http://json-schema.org/schema","title":"Recipe collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Recipe representation","properties":{"createdAt":{"type":"string"},"image":{"type":"object"},"name":{"type":"string"},"objectId":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}}}}'
-  - Recipe_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Recipe representation","properties":{"createdAt":{"type":"string"},"image":{"type":"object"},"name":{"type":"string"},"objectId":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}'
+  - Recipe_collection: '{"$schema":"http://json-schema.org/schema","title":"Recipe collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Recipe representation","properties":{"actions":{"type":"string"},"author":{"type":"string"},"createdAt":{"type":"string"},"description":{"type":"string"},"image":{"type":"object"},"ingredients":{"type":"string"},"name":{"type":"string"},"objectId":{"type":"string"},"time":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}}}}'
+  - Recipe_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Recipe representation","properties":{"actions":{"type":"string"},"author":{"type":"string"},"createdAt":{"type":"string"},"description":{"type":"string"},"image":{"type":"object"},"ingredients":{"type":"string"},"name":{"type":"string"},"objectId":{"type":"string"},"time":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}'
 
 resourceTypes:
   - dolan_db_collection:
