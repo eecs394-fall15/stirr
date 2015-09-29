@@ -15,3 +15,13 @@ module.exports =
   		location: "stirr#edit"
   	}
   ]
+
+  tabs: [
+
+    {
+      title: "home"
+      id: "home-benjamin"
+      location: "stirr#home-benjamin"
+    }
+
+  ]
