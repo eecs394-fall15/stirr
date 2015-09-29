@@ -18,7 +18,7 @@
       <div class="item list">
         <label class="item item-input">
           <span class="input-label">Recipe Name:</span>
-          <input type="text" name="name" ng-model="recipe.name" placeholder="Enter name">  
+          <input type="text" name="name" ng-model="recipe.name" placeholder="{{ recipe.name }}">
         </label>
         <label class="item item-input">
           <span class="input-label">Author:</span>
@@ -33,17 +33,17 @@
 
     <div class="card">
       <div class="item item-divider">
-        Ingredients 
+        Ingredients
       </div>
       <div class="item list" ng-repeat="ingredient in recipe.ingredients">
         <div class="item item-input">
           <div>
             <span class="input-label">Ingredient:</span>
-            <input type="text" name="name" ng-model="ingredient.name" placeholder="Enter ingredient"> 
+            <input type="text" name="name" ng-model="ingredient.name" placeholder="Enter ingredient">
           </div>
           <div>
             <span class="input-label">Quantity:</span>
-            <input type="text" name="quantity" ng-model="ingredient.quantity" placeholder="Enter quantity">  
+            <input type="text" name="quantity" ng-model="ingredient.quantity" placeholder="Enter quantity">
           </div>
         </div>
       </div>
@@ -60,6 +60,10 @@
         </label>
       </div>
     </div>
+
+    <button type="submit">
+      save
+    </button>
 
   </form>
 
