@@ -8,6 +8,12 @@ angular
       if ($scope.recipe) {
         $scope.showSpinner = true;
 
+        // check for empty ingredients and steps
+        $scope.recipe.ingredients = checkEmpty($scope.recipe.ingredients,
+                                               'name');
+        $scope.recipe.actions = checkEmpty($scope.recipe.actions,
+                                            'step');
+
         // convert recipe JSON into strings
         $scope.recipe.ingredients = JSON.stringify($scope.recipe.ingredients);
         $scope.recipe.actions = JSON.stringify($scope.recipe.actions);
@@ -48,5 +54,26 @@ angular
         $scope.showSpinner = false;
       });
     });
+
+    $scope.addIngredient = function() {
+      $scope.recipe.ingredients = $scope.recipe.ingredients.
+                                    concat({'name': '', 'quantity': ''});
+      $scope.apply();
+    };
+
+    $scope.addAction = function() {
+      $scope.recipe.actions = $scope.recipe.actions.concat({'step': ''});
+      $scope.apply();
+    };
+
+    var checkEmpty = function(objArray, key) {
+      var outputArray = [];
+      for (var i in objArray) {
+        if (objArray[i][key] !== '') {
+          outputArray = outputArray.concat(objArray[i]);
+        }
+      }
+      return (outputArray);
+    };
 
   });
