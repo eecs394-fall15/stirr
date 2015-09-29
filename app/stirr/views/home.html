@@ -1,56 +1,44 @@
 <div class="padding" ng-controller="HomeController">
-<!DOCTYPE html>
-<html class="views-home anonymous" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
 
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway:200,400,700">
-    <link href="https://yummly-static.a.ssl.fastly.net/yummly-website/7932c3a77553c529be4a3f2967c164abaa7f284e/css/yummly.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <div id="fb-root"></div>
-  <div id="content" class="content">
-    <table class="y-grid">
-      <tbody>
-        <tr>
-          <td id="y-filters" class="y-filters"></td>
-          <td id="y-results" class="y-results">
-            <div id="hero" class="hero">
-              <div class="hero-wrapper">
-                <div class="focus">
-                  <div class="title">Discover the world's recipes</div>
-                </div>
-                <div class="sidekick">
-                  <img src="http://images.media-allrecipes.com/images/50819.jpg" class="bigimage" width="1200" height="300">
-                </div>
-              </div>
-              <div id="google-ads-0" class="ad-hero image"></div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</body>
-<super-navbar>
+  <super-navbar>
     <super-navbar-title>
-        stirr
+      stirr
     </super-navbar-title>
-</super-navbar>
-<div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-<div ng-hide="showSpinner">
-    <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
-        <div class="position-relative">
-            <div class="item stirr-head padding">
-                <h1>{{ recipe.name }}</h1>
-                <h2>By {{ recipe.description.authorName }}</h2>
-            </div>
-            <div ng-show="recipe['image']" class="item item-image">
-                <img ng-src="{{ recipe['image'].url }}">
-            </div>
-        </div>
-    </super-navigate>
-</div>
+  </super-navbar>
 
-</html>
+<!--   <super-navigate view-id="view-dishes">
+    <button class="button button-block button-positive icon-left super-wand">View Current Dishes</button>
+  </super-navigate>
+
+  <super-navigate view-id="edit-dishes">
+    <button class="button button-block button-positive icon-left super-wand">Edit Current Dishes</button>
+  </super-navigate>
+
+  <super-navigate view-id="recipe#index">
+    <button class="button button-block button-positive icon-left super-wand">View Recipes</button>
+  </super-navigate> -->
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+      <div class="position-relative">
+        <div class="item stirr-head padding">
+          <h1>{{ recipe.name }}</h1>
+          <h2>By {{ recipe.author }}</h2>
+        </div>
+        <div ng-show="recipe.image" class="item item-image">
+          <img ng-src="{{ recipe.image.url }}">
+        </div>
+      </div>
+    </super-navigate>
+
+    <h4 ng-show="recipes.length == 0" class="assertive padding">
+      No recipes found. Create one?
+    </h4>
+
+    <!-- <button class="button button-full button-positive" ng-click="newRecipe()">
+      Create a new recipe
+    </button> -->
+  </div>
+
+</div>
