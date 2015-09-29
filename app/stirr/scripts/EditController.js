@@ -2,6 +2,7 @@ angular
   .module('stirr')
   .controller('EditController', function($scope, Recipe, supersonic) {
     $scope.recipe = null;
+    $scope.errorMsg = null;
     $scope.showSpinner = true;
 
     var _back = function() {
@@ -17,6 +18,8 @@ angular
           $scope.showSpinner = false;
           supersonic.ui.layers.pop();
         });
+      } else {
+        supersonic.ui.layers.pop();
       }
     };
 
@@ -36,17 +39,22 @@ angular
     supersonic.ui.navigationBar.update(_options);
 
     // Fetch an object based on id from the database
-    Recipe.find(steroids.view.params.id).then(function(recipe) {
-      $scope.$apply(function() {
-        $scope.recipe = recipe;
+    Recipe.find(steroids.view.params.id).then(
+        function(recipe) {
+          $scope.$apply(function() {
+            $scope.recipe = recipe;
 
-        // Parse string json into in json object
-        $scope.recipe.ingredients = JSON.parse($scope.recipe.ingredients);
-        $scope.recipe.actions = JSON.parse($scope.recipe.actions);
-        $scope.recipe.time = JSON.parse($scope.recipe.time);
+            // Parse string json into in json object
+            $scope.recipe.ingredients = JSON.parse($scope.recipe.ingredients);
+            $scope.recipe.actions = JSON.parse($scope.recipe.actions);
+            $scope.recipe.time = JSON.parse($scope.recipe.time);
 
-        $scope.showSpinner = false;
-      });
-    });
+            $scope.showSpinner = false;
+          });
+        },
+        function(errorMsg) {
+          $scope.showSpinner = false;
+          $scope.errorMsg = errorMsg;
+        });
 
   });
