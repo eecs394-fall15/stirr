@@ -1,4 +1,36 @@
-.stirr-head {
+/*supersonic native styling*/
+.supersonic-navbar-mock {
+  background-color: #00B5FF!important;
+  text-align: center;
+  font-weight: 600;
+}
+
+/*styles applied to entire app*/
+.padding {
+  padding: 0px;
+}
+
+/*styling for loading spinner*/
+.spinner-box {
+  height: 100%;
+  min-height:400px;
+  display: -webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  background-color: rgba(255,255,255,60);
+}
+
+.super-loading-c {
+  font-size: 50px;
+}
+
+/*styles applied to home page*/
+.recipe-item {
+  position: relative;
+}
+
+.recipe-name-author {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -11,16 +43,7 @@
   opacity: 0.7;
 }
 
-.supersonic-navbar-mock {
-  background-color: #00B5FF !important;
-  text-align: center;
-  font-weight: 600;
-}
-
-.padding {
-  padding: 0px;
-}
-
+/*styles applied to edit page*/
 .image {
   width: 100%;
 }
@@ -29,6 +52,4 @@
   margin-bottom: 0px;
 }
 
-.position-relative {
-  position: relative;
-}
+
