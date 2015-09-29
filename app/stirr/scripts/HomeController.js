@@ -11,4 +11,16 @@ angular
         $scope.showSpinner = false;
       });
     });
+
+    $scope.newRecipe = function() {
+      var recipe = new Recipe({});
+      recipe.save().then(function() {
+        var view = new supersonic.ui.View('stirr#edit');
+        supersonic.ui.layers.push(view, {
+          params: {
+            id: recipe.id
+          }
+        });
+      });
+    };
   });
