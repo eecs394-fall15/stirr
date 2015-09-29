@@ -21,8 +21,8 @@
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
-      <div class="position-relative">
-        <div class="item stirr-head padding">
+      <div class="recipe-item">
+        <div class="item recipe-name-author padding">
           <h1>{{ recipe.name }}</h1>
           <h2>By {{ recipe.author }}</h2>
         </div>
