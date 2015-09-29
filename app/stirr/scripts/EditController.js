@@ -19,6 +19,8 @@ angular
       });
     };
 
+    _refreshViewData();
+
     $scope.submitForm = function() {
       $scope.showSpinner = true;
       $scope.recipe.save().then(function() {
