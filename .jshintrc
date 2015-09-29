@@ -4,6 +4,7 @@
   "curly": true,
   "globals": {
     "angular": true,
+    "steroids": true,
     "supersonic": true
   }
 }
