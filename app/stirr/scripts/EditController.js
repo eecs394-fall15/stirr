@@ -45,7 +45,6 @@ angular
         $scope.recipe.actions = JSON.parse($scope.recipe.actions);
         $scope.recipe.time = JSON.parse($scope.recipe.time);
 
-
         $scope.showSpinner = false;
       });
     });

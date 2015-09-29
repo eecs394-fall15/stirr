@@ -6,18 +6,6 @@
     </super-navbar-title>
   </super-navbar>
 
-<!--   <super-navigate view-id="view-dishes">
-    <button class="button button-block button-positive icon-left super-wand">View Current Dishes</button>
-  </super-navigate>
-
-  <super-navigate view-id="edit-dishes">
-    <button class="button button-block button-positive icon-left super-wand">Edit Current Dishes</button>
-  </super-navigate>
-
-  <super-navigate view-id="recipe#index">
-    <button class="button button-block button-positive icon-left super-wand">View Recipes</button>
-  </super-navigate> -->
-
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
