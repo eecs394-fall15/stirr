@@ -11,4 +11,5 @@ angular
         $scope.showSpinner = false;
       });
     });
+
   });
