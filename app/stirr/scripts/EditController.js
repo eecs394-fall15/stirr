@@ -9,10 +9,10 @@ angular
         $scope.showSpinner = true;
 
         // check for empty ingredients and steps
-        $scope.recipe.ingredients = checkEmpty($scope.recipe.ingredients,
-                                               'name');
-        $scope.recipe.actions = checkEmpty($scope.recipe.actions,
-                                            'step');
+        $scope.recipe.ingredients = checkEmpty(
+          $scope.recipe.ingredients, 'name');
+        $scope.recipe.actions = checkEmpty(
+          $scope.recipe.actions, 'step');
 
         // convert recipe JSON into strings
         $scope.recipe.ingredients = JSON.stringify($scope.recipe.ingredients);
@@ -56,21 +56,28 @@ angular
     });
 
     $scope.addIngredient = function() {
-      $scope.recipe.ingredients = $scope.recipe.ingredients.
-                                    concat({'name': '', 'quantity': ''});
+      $scope.recipe.ingredients.push({'name': '', 'quantity': ''});
       $scope.apply();
     };
 
     $scope.addAction = function() {
-      $scope.recipe.actions = $scope.recipe.actions.concat({'step': ''});
+      $scope.recipe.actions.push({'step': ''});
       $scope.apply();
     };
 
+    /**
+     * Creates a new array for ingredients/actions without
+     * blank object entries. Object is blank if key value is empty string.
+     *
+     * @param  {Array} objArray - array of objects
+     * @param  {String} key - component of object to check if empty
+     * @return {Array} - array with blank objects removed
+     */
     var checkEmpty = function(objArray, key) {
       var outputArray = [];
       for (var i in objArray) {
         if (objArray[i][key] !== '') {
-          outputArray = outputArray.concat(objArray[i]);
+          outputArray.push(objArray[i]);
         }
       }
       return (outputArray);
