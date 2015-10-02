@@ -16,9 +16,9 @@ angular
           $scope.recipe.actions, 'step');
 
         // convert recipe JSON into strings
-        $scope.recipe.ingredients = JSON.stringify($scope.recipe.ingredients);
-        $scope.recipe.actions = JSON.stringify($scope.recipe.actions);
-        $scope.recipe.time = JSON.stringify($scope.recipe.time);
+        $scope.recipe.ingredients = angular.toJson($scope.recipe.ingredients);
+        $scope.recipe.actions = angular.toJson($scope.recipe.actions);
+        $scope.recipe.time = angular.toJson($scope.recipe.time);
 
         $scope.recipe.save().then(function() {
           $scope.showSpinner = false;
