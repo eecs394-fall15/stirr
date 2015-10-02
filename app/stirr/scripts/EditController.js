@@ -38,6 +38,8 @@ angular
 
     supersonic.ui.navigationBar.update(_options);
 
+    supersonic.device.buttons.back.whenPressed(_back);
+
     // Fetch an object based on id from the database
     Recipe.find(steroids.view.params.id).then(
         function(recipe) {
