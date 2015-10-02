@@ -1,6 +1,7 @@
 <div class="padding" ng-controller="EditController">
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-  <div ng-hide="showSpinner">
+  <h1 ng-show="errorMsg">{{ errorMsg }}</h1>
+  <div ng-hide="showSpinner || errorMsg">
 
     <img class="image" ng-src="{{ recipe.image.url }}" ng-show="recipe.image">
     <img class="image" src="/food-placeholder.png" ng-hide="recipe.image">
