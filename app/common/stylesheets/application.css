@@ -25,25 +25,6 @@
   font-size: 50px;
 }
 
-/*styles applied to home page*/
-.recipe-item {
-  position: relative;
-}
-
-.recipe-name-author {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  z-index: 20;
-  background-color: transparent;
-  border: none;
-}
-
-.item-image {
-  opacity: 0.7;
-}
-
-/*styles applied to edit page*/
 .stirr-banner {
   position: relative;
   padding: 0;
@@ -54,6 +35,9 @@
 
 .stirr-banner img {
   position: absolute;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 .stirr-banner button.stirr-image-edit {
@@ -63,6 +47,7 @@
   width: 40px;
   height: 40px;
   padding: 0;
+  margin: 0;
   border: none !important;
   background: transparent;
   line-height: 40px;
@@ -71,8 +56,26 @@
   color: white;
 }
 
-.list {
-  margin-bottom: 0px;
+.stirr-banner .stirr-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
+.stirr-overlay h2, .stirr-overlay h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: white;
+}
 
+#new-recipe-button {
+  padding: 0;
+  margin: 0;
+}

@@ -2,14 +2,12 @@
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <h1 ng-show="errorMsg">{{ errorMsg }}</h1>
   <div ng-hide="showSpinner || errorMsg">
-
     <div class="stirr-banner">
       <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
       <button class="stirr-image-edit" ng-click="editImage()">
         <i class="icon super-edit"></i>
       </button>
     </div>
-
     <form>
       <div class="card">
         <div class="item item-divider">
@@ -30,7 +28,6 @@
           </label>
         </div>
       </div>
-
       <div class="card">
         <div class="item item-divider">
           Ingredients
@@ -45,12 +42,10 @@
             </div>
           </div>
         </div>
-
         <button class="button button-block button-positive" ng-click="addIngredient()">
           Add Ingredient
         </button>
       </div>
-
       <div class="card">
         <div class="item item-divider">
           Instructions
@@ -61,7 +56,6 @@
             <input type="text" name="step" ng-model="action.step" placeholder="Enter instructions">
           </label>
         </div>
-
         <button class="button button-block button-positive" ng-click="addAction()">
           Add Action
         </button>
