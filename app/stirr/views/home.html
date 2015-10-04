@@ -1,13 +1,14 @@
 <div class="padding" ng-controller="HomeController">
-
   <super-navbar>
     <super-navbar-title>
       stirr
     </super-navbar-title>
   </super-navbar>
-
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
+    <button class="button button-full button-positive" ng-click="newRecipe()">
+      Create a new recipe
+    </button>
     <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
       <div class="recipe-item">
         <div class="item recipe-name-author padding">
@@ -23,10 +24,6 @@
     <h4 ng-show="recipes.length == 0" class="assertive padding">
       No recipes found. Create one?
     </h4>
-
-    <!-- <button class="button button-full button-positive" ng-click="newRecipe()">
-      Create a new recipe
-    </button> -->
   </div>
 
 </div>
