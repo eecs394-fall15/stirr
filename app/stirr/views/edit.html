@@ -3,8 +3,12 @@
   <h1 ng-show="errorMsg">{{ errorMsg }}</h1>
   <div ng-hide="showSpinner || errorMsg">
 
-    <img class="image" ng-src="{{ recipe.image.url }}" ng-show="recipe.image">
-    <img class="image" src="/food-placeholder.png" ng-hide="recipe.image">
+    <div class="stirr-banner">
+      <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
+      <button class="stirr-image-edit" ng-click="editImage()">
+        <i class="icon super-edit"></i>
+      </button>
+    </div>
 
     <form>
       <div class="card">

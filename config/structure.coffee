@@ -5,13 +5,4 @@ module.exports =
   rootView:
     location: "stirr#home"
 
-  preloads: [
-  	{
-  		id: "view-dishes"
-  		location: "stirr#view"
-  	}
-  	{
-  		id: "edit-dishes"
-  		location: "stirr#edit"
-  	}
-  ]
+  preloads: []

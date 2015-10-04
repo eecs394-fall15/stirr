@@ -93,4 +93,12 @@ angular
       return (outputArray);
     };
 
+    $scope.editImage = function() {
+      supersonic.media.camera.getFromPhotoLibrary({
+        encodingType: 'png',
+      }).then(function(result) {
+        console.log(result);
+      });
+    };
+
   });

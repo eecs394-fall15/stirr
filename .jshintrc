@@ -3,6 +3,7 @@
   "undef": true,
   "curly": true,
   "devel": true,
+  "browser": true,
   "globals": {
     "angular": true,
     "steroids": true,

@@ -15,8 +15,7 @@
           <h2>By {{ recipe.author }}</h2>
         </div>
         <div class="item item-image">
-          <img class="image" ng-src="{{ recipe.image.url }}" ng-show="recipe.image">
-          <img class="image" src="/food-placeholder.png" ng-hide="recipe.image">
+          <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
         </div>
       </div>
     </super-navigate>
