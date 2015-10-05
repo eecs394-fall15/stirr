@@ -15,6 +15,7 @@ angular
     $scope.newRecipe = function() {
       var recipe = new Recipe({});
       recipe.save().then(function() {
+        alert(recipe.id);
         var view = new supersonic.ui.View('stirr#edit');
         supersonic.ui.layers.push(view, {
           params: {

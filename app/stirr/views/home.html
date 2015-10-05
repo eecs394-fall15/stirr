@@ -1,32 +1,26 @@
 <div class="padding" ng-controller="HomeController">
-
   <super-navbar>
     <super-navbar-title>
       stirr
     </super-navbar-title>
   </super-navbar>
-
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
-      <div class="recipe-item">
-        <div class="item recipe-name-author padding">
-          <h1>{{ recipe.name }}</h1>
-          <h2>By {{ recipe.author }}</h2>
-        </div>
-        <div ng-show="recipe.image" class="item item-image">
-          <img ng-src="{{ recipe.image.url }}">
+      <div class="stirr-banner">
+        <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
+        <div class="stirr-overlay">
+          <h2>{{ recipe.name }}</h2>
+          <h3>By {{ recipe.author }}</h3>
         </div>
       </div>
     </super-navigate>
-
     <h4 ng-show="recipes.length == 0" class="assertive padding">
       No recipes found. Create one?
     </h4>
-
-    <!-- <button class="button button-full button-positive" ng-click="newRecipe()">
+    <button id="new-recipe-button" class="button button-full button-positive" ng-click="newRecipe()">
       Create a new recipe
-    </button> -->
+    </button>
+    </div>
   </div>
-
 </div>
