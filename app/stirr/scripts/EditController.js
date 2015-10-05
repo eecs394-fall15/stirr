@@ -56,7 +56,7 @@ angular
             $scope.recipe.ingredients =
                 JSON.parse($scope.recipe.ingredients || '[]');
             $scope.recipe.actions = JSON.parse($scope.recipe.actions || '[]');
-            $scope.recipe.time = JSON.parse($scope.recipe.time || '[]');
+            $scope.recipe.time = JSON.parse($scope.recipe.time || '{}');
 
             $scope.showSpinner = false;
           });
