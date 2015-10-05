@@ -10,6 +10,10 @@
   padding: 0px;
 }
 
+[ng-controller="EditController"] .list {
+  margin-bottom: 0px;
+}
+
 /*styling for loading spinner*/
 .spinner-box {
   height: 100%;
