@@ -53,9 +53,10 @@ angular
             $scope.recipe = recipe;
 
             // Parse string json into in json object
-            $scope.recipe.ingredients = JSON.parse($scope.recipe.ingredients);
-            $scope.recipe.actions = JSON.parse($scope.recipe.actions);
-            $scope.recipe.time = JSON.parse($scope.recipe.time);
+            $scope.recipe.ingredients =
+                JSON.parse($scope.recipe.ingredients || '[]');
+            $scope.recipe.actions = JSON.parse($scope.recipe.actions || '[]');
+            $scope.recipe.time = JSON.parse($scope.recipe.time || '{}');
 
             $scope.showSpinner = false;
           });
@@ -91,6 +92,14 @@ angular
         }
       }
       return (outputArray);
+    };
+
+    $scope.editImage = function() {
+      supersonic.media.camera.getFromPhotoLibrary({
+        encodingType: 'png',
+      }).then(function(result) {
+        console.log(result);
+      });
     };
 
   });
