@@ -10,7 +10,7 @@ angular
 
         var setContainerDimensions = function() {
           if (!$element[0].offsetWidth) {
-            window.setTimeout(setContainerDimensions, 0);
+            _.defer(setContainerDimensions);
             return;
           }
           targetWidth = $element[0].offsetWidth;
@@ -28,7 +28,6 @@ angular
           var imgWidth = img.naturalWidth;
           var imgHeight = img.naturalHeight;
           var imgRatio = imgWidth / imgHeight;
-          console.log(imgWidth, imgHeight, targetWidth, targetHeight);
           if (imgWidth / imgHeight < (3 / 2)) {
             angular.element(img)
                 .css('width', targetWidth.toString() + 'px')
