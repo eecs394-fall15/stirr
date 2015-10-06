@@ -68,12 +68,12 @@ angular
 
     $scope.addIngredient = function() {
       $scope.recipe.ingredients.push({'name': '', 'quantity': ''});
-      $scope.apply();
+      $scope.$apply();
     };
 
     $scope.addAction = function() {
       $scope.recipe.actions.push({'step': ''});
-      $scope.apply();
+      $scope.$apply();
     };
 
     /**
@@ -97,8 +97,18 @@ angular
     $scope.editImage = function() {
       supersonic.media.camera.getFromPhotoLibrary({
         encodingType: 'png',
+        destinationType: 'dataURL'
       }).then(function(result) {
-        console.log(result);
+        var file = new Parse.File(Date.now().toString(), {base64: result}, 'image/png');
+        file.save().then(function() {
+          var url = file.url();
+          $scope.recipe.image = {
+            __type: "File",
+            name: file.name(),
+            url: file.url()
+          };
+          $scope.$apply();
+        });
       });
     };
 
