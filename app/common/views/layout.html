@@ -16,6 +16,8 @@
   <script src="/components/supersonic/supersonic.js"></script>
   <script src="/components/webcomponentsjs/webcomponents.js"></script>
   <script src="/components/underscore/underscore.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.6.4.min.js"></script>
+  <script>Parse.initialize("p1TaGRy0v3CPYkAG1lbRSn0RaUnFpWOFrlGL6FsD", "ZfzqREum4VAvKo2c1g5gNP3IdCCuRpUA0xq3YLM5");</script>
 
   <% _.each(yield.modules, function(module) { %>
   <script src="/app/<%= module %>.js"></script>

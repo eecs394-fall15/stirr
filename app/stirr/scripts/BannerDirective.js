@@ -22,6 +22,7 @@ angular
         };
 
         var setImageDimensions = function(img) {
+          supersonic.logger.info('setImageDimensions called');
           if (!targetWidth || !targetHeight) {
             return;
           }
