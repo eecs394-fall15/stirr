@@ -94,22 +94,38 @@ angular
       return (outputArray);
     };
 
-    $scope.editImage = function() {
-      supersonic.media.camera.getFromPhotoLibrary({
-        encodingType: 'png',
-        destinationType: 'dataURL'
-      }).then(function(result) {
-        var file = new Parse.File(Date.now().toString(), {base64: result}, 'image/png');
-        file.save().then(function() {
-          var url = file.url();
+    var _uploadBase64ToParse = function(base64) {
+      $scope.$apply(function() {
+        $scope.showSpinner = true;
+      });
+
+      var file = new Parse.File(
+          Date.now().toString(), {base64: base64}, 'image/png');
+      file.save().then(function() {
+        var url = file.url();
+        $scope.$apply(function() {
+          $scope.showSpinner = false;
           $scope.recipe.image = {
             __type: "File",
             name: file.name(),
             url: file.url()
           };
-          $scope.$apply();
         });
       });
+    }
+
+    $scope.uploadImage = function() {
+      supersonic.media.camera.getFromPhotoLibrary({
+        encodingType: 'png',
+        destinationType: 'dataURL'
+      }).then(_uploadBase64ToParse);
+    };
+
+    $scope.snapImage = function() {
+      supersonic.media.camera.takePicture({
+        encodingType: 'png',
+        destinationType: 'dataURL'
+      }).then(_uploadBase64ToParse);
     };
 
   });

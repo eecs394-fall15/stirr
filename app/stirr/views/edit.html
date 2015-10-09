@@ -4,9 +4,14 @@
   <div ng-hide="showSpinner || errorMsg">
     <div class="stirr-banner">
       <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}" ng-click="editImage()">
-      <button class="stirr-image-edit" ng-click="editImage()">
-        <i class="icon super-edit"></i>
-      </button>
+      <div class="stirr-image-edit">
+        <button ng-click="uploadImage()">
+          <i class="icon super-folder"></i>
+        </button>
+        <button ng-click="snapImage()">
+          <i class="icon super-camera"></i>
+        </button>
+      </div>
     </div>
     <form>
       <div class="card">
