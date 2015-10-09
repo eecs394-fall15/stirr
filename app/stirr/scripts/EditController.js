@@ -9,14 +9,18 @@ angular
     $scope.time = null;
 
     var _back = function() {
+      // TODO: check for unsaved changes
+      supersonic.ui.layers.pop();
+    };
+
+    var _save = function() {
       if ($scope.recipe) {
         $scope.showSpinner = true;
+        $scope.$apply();
 
         // check for empty ingredients and steps
-        $scope.ingredients = checkEmpty(
-          $scope.ingredients, 'name');
-        $scope.actions = checkEmpty(
-          $scope.actions, 'step');
+        $scope.ingredients = checkEmpty($scope.ingredients, 'name');
+        $scope.actions = checkEmpty($scope.actions, 'step');
 
         // convert recipe JSON into strings
         $scope.recipe.ingredients = angular.toJson($scope.ingredients);
@@ -25,10 +29,8 @@ angular
 
         $scope.recipe.save().then(function() {
           $scope.showSpinner = false;
-          supersonic.ui.layers.pop();
+          $scope.$apply();
         });
-      } else {
-        supersonic.ui.layers.pop();
       }
     };
 
@@ -37,17 +39,23 @@ angular
       onTap: _back
     });
 
+    var _saveButton = new supersonic.ui.NavigationBarButton({
+      title: 'Save',
+      onTap: _save
+    });
+
     var _options = {
       title: 'stirr',
       overrideBackButton: true,
       buttons: {
-        left: [_backButton]
+        left: [_backButton],
+        right: [_saveButton]
       }
     };
 
     supersonic.ui.navigationBar.update(_options);
 
-    supersonic.device.buttons.back.whenPressed(_back);
+    // supersonic.device.buttons.back.whenPressed(_back);
 
     // Fetch an object based on id from the database
     Recipe.find(steroids.view.params.id).then(
@@ -72,24 +80,6 @@ angular
     $scope.addIngredient = function() {
       $scope.ingredients.push({'name': '', 'quantity': ''});
     };
-
-    // $scope.saveIngredient = function() {
-    //   // check for empty ingredients and steps
-    //   $scope.recipe.ingredients = checkEmpty(
-    //     $scope.recipe.ingredients, 'name');
-    //   $scope.recipe.actions = checkEmpty(
-    //     $scope.recipe.actions, 'step');
-
-    //   // convert recipe JSON into strings
-    //   $scope.recipe.ingredients = angular.toJson($scope.recipe.ingredients);
-    //   $scope.recipe.actions = angular.toJson($scope.recipe.actions);
-    //   $scope.recipe.time = angular.toJson($scope.recipe.time);
-
-    //   // BUG HERE! once json is stringified, you can't add more things
-    //   // options: parse at start of add, or parse again after saving
-
-    //   $scope.recipe.save();
-    // };
 
     $scope.addAction = function() {
       $scope.actions.push({'step': ''});
