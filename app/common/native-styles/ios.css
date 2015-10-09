@@ -49,3 +49,7 @@ tab-bar-item#internet {
 #back-button icon {
   background-image: url(icons/arrow-left-c.svg);
 }
+
+#save-button icon {
+  background-image: url(icons/checkmark-round.svg);
+}

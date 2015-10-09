@@ -40,7 +40,7 @@ angular
     });
 
     var _saveButton = new supersonic.ui.NavigationBarButton({
-      title: 'Save',
+      styleId: 'save-button',
       onTap: _save
     });
 
