@@ -3,7 +3,7 @@
   <h1 ng-show="errorMsg">{{ errorMsg }}</h1>
   <div ng-hide="showSpinner || errorMsg">
     <div class="stirr-banner">
-      <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}" ng-click="editImage()">
+      <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
       <div class="stirr-image-edit">
         <button ng-click="uploadImage()">
           <i class="icon super-folder"></i>
