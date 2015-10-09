@@ -32,7 +32,7 @@
         <div class="item item-divider">
           Ingredients
         </div>
-        <div class="item list" ng-repeat="ingredient in recipe.ingredients">
+        <div class="item list" ng-repeat="ingredient in ingredients">
           <div class="item item-input">
             <div>
               <input type="text" name="name" ng-model="ingredient.name" placeholder="Enter ingredient">
@@ -42,9 +42,9 @@
             </div>
           </div>
         </div>
-        <button class="button button-block button-positive" ng-click="saveIngredient()">
+       <!--  <button class="button button-block button-positive" ng-click="saveIngredient()">
           Save
-        </button>
+        </button> -->
         <button class="button button-block button-positive" ng-click="addIngredient()">
           Add Ingredient
         </button>
@@ -53,7 +53,7 @@
         <div class="item item-divider">
           Instructions
         </div>
-        <div class="item list" ng-repeat="action in recipe.actions">
+        <div class="item list" ng-repeat="action in actions">
           <label class="item item-input">
             <span class="input-label">Step {{ $index + 1 }}:</span>
             <input type="text" name="step" ng-model="action.step" placeholder="Enter instructions">
