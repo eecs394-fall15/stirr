@@ -33,7 +33,8 @@ angular
     };
 
     var _backButton = new supersonic.ui.NavigationBarButton({
-      title: 'Back',
+      title: '',
+      styleId: 'back-button',
       onTap: _back
     });
 

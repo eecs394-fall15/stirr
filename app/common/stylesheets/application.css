@@ -83,3 +83,7 @@
   padding: 0;
   margin: 0;
 }
+
+#back-button {
+  background-image: url('icons/arrow-left-c.svg');
+}
