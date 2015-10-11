@@ -49,7 +49,7 @@ angular
     // Fetch an object based on id from the database
     Recipe.find(steroids.view.params.id).then(
         function(recipe) {
-          $scope.$apply(function() {
+          $scope.$apply(function($scope) {
             $scope.recipe = recipe;
 
             // Parse string json into in json object
@@ -68,12 +68,10 @@ angular
 
     $scope.addIngredient = function() {
       $scope.recipe.ingredients.push({'name': '', 'quantity': ''});
-      $scope.$apply();
     };
 
     $scope.addAction = function() {
       $scope.recipe.actions.push({'step': ''});
-      $scope.$apply();
     };
 
     /**
@@ -94,22 +92,38 @@ angular
       return (outputArray);
     };
 
-    $scope.editImage = function() {
-      supersonic.media.camera.getFromPhotoLibrary({
-        encodingType: 'png',
-        destinationType: 'dataURL'
-      }).then(function(result) {
-        var file = new Parse.File(Date.now().toString(), {base64: result}, 'image/png');
-        file.save().then(function() {
-          var url = file.url();
+    var _uploadBase64ToParse = function(base64) {
+      $scope.$apply(function($scope) {
+        $scope.showSpinner = true;
+      });
+
+      var file = new Parse.File(
+          Date.now().toString(), {base64: base64}, 'image/png');
+      file.save().then(function() {
+        var url = file.url();
+        $scope.$apply(function($scope) {
+          $scope.showSpinner = false;
           $scope.recipe.image = {
             __type: "File",
             name: file.name(),
             url: file.url()
           };
-          $scope.$apply();
         });
       });
+    }
+
+    $scope.uploadImage = function() {
+      supersonic.media.camera.getFromPhotoLibrary({
+        encodingType: 'png',
+        destinationType: 'dataURL'
+      }).then(_uploadBase64ToParse);
+    };
+
+    $scope.snapImage = function() {
+      supersonic.media.camera.takePicture({
+        encodingType: 'png',
+        destinationType: 'dataURL'
+      }).then(_uploadBase64ToParse);
     };
 
   });
