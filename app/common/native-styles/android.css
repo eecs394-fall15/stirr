@@ -73,9 +73,9 @@ tab-bar-item#internet {
 }
 
 #back-button {
-  background-image: url(icons/arrow-left-c.svg);
+  background-image: url(icons/android-arrow-back.svg);
 }
 
 #save-button {
-  background-image: url(icons/checkmark-round.svg);
+  background-image: url(icons/android-done.svg);
 }
