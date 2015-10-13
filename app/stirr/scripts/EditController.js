@@ -1,12 +1,16 @@
 angular
   .module('stirr')
   .controller('EditController', function($scope, Recipe, supersonic) {
+
     $scope.recipe = null;
     $scope.errorMsg = null;
     $scope.showSpinner = true;
+    $scope.showImageSpinner = true;
     $scope.ingredients = null;
     $scope.actions = null;
     $scope.time = null;
+    $scope.name = null;
+    $scope.url = '/food-placeholder.png';
 
     var _back = function() {
       // TODO: check for unsaved changes
@@ -15,8 +19,9 @@ angular
 
     var _save = function() {
       if ($scope.recipe) {
-        $scope.showSpinner = true;
-        $scope.$apply();
+        $scope.$apply(function($scope) {
+          $scope.showSpinner = true;
+        });
 
         // check for empty ingredients and steps
         $scope.ingredients = checkEmpty($scope.ingredients, 'name');
@@ -27,9 +32,16 @@ angular
         $scope.recipe.actions = angular.toJson($scope.actions);
         $scope.recipe.time = angular.toJson($scope.time);
 
+        $scope.recipe.image = {
+          __type: 'File',
+          name: $scope.name,
+          url: $scope.url
+        }
+
         $scope.recipe.save().then(function() {
-          $scope.showSpinner = false;
-          $scope.$apply();
+          $scope.$apply(function($scope) {
+            $scope.showSpinner = false;
+          });
         });
       }
     };
@@ -63,6 +75,11 @@ angular
           $scope.$apply(function($scope) {
             $scope.recipe = recipe;
 
+            if ($scope.recipe.image) {
+              $scope.name = $scope.recipe.image.name;
+              $scope.url = $scope.recipe.image.url;
+            }
+
             // Parse string json into in json object
             $scope.ingredients =
                 JSON.parse($scope.recipe.ingredients || '[]');
@@ -84,7 +101,7 @@ angular
     $scope.addAction = function() {
       $scope.actions.push({'step': ''});
     };
-    
+
     /**
      * Creates a new array for ingredients/actions without
      * blank object entries. Object is blank if key value is empty string.
@@ -104,21 +121,15 @@ angular
     };
 
     var _uploadBase64ToParse = function(base64) {
-      $scope.$apply(function($scope) {
-        $scope.showSpinner = true;
-      });
-
+      supersonic.logger.info('uploading');
+      $scope.showImageSpinner = true;
       var file = new Parse.File(
           Date.now().toString(), {base64: base64}, 'image/png');
       file.save().then(function() {
-        var url = file.url();
+        supersonic.logger.info('file saved');
         $scope.$apply(function($scope) {
-          $scope.showSpinner = false;
-          $scope.recipe.image = {
-            __type: "File",
-            name: file.name(),
-            url: file.url()
-          };
+          $scope.name = file.name();
+          $scope.url = file.url();
         });
       });
     }
