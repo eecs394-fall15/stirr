@@ -11,9 +11,12 @@ angular
     $scope.time = null;
     $scope.name = null;
     $scope.url = '/food-placeholder.png';
+    $scope.changed = false;
 
     var _back = function() {
-      // TODO: check for unsaved changes
+      if ($scope.changed) {
+        alert('changed');
+      }
       supersonic.ui.layers.pop();
     };
 
@@ -42,6 +45,7 @@ angular
           $scope.$apply(function($scope) {
             $scope.showSpinner = false;
           });
+          $scope.changed = false;
         });
       }
     };
@@ -88,6 +92,7 @@ angular
 
             $scope.showSpinner = false;
           });
+          $scope.changed = false;
         },
         function(errorMsg) {
           $scope.showSpinner = false;
@@ -148,4 +153,14 @@ angular
       }).then(_uploadBase64ToParse);
     };
 
+    var _changed = function() {
+      $scope.changed = true;
+    }
+
+    $scope.$watch('recipe', _changed);
+    $scope.$watch('ingredients', _changed);
+    $scope.$watch('actions', _changed);
+    $scope.$watch('time', _changed);
+    $scope.$watch('name', _changed);
+    $scope.$watch('url', _changed);
   });
