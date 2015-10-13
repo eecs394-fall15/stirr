@@ -47,9 +47,9 @@ tab-bar-item#internet {
 }
 
 #back-button icon {
-  background-image: url(icons/arrow-left-c.svg);
+  background-image: url(icons/ios-arrow-back.svg);
 }
 
 #save-button icon {
-  background-image: url(icons/checkmark-round.svg);
+  background-image: url(icons/ios-checkmark-outline.svg);
 }
