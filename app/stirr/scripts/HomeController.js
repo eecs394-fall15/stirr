@@ -12,7 +12,7 @@ angular
       });
     });
 
-    $scope.newRecipe = function() {
+    var _newRecipe = function() {
       var recipe = new Recipe({});
       recipe.save().then(function() {
         var view = new supersonic.ui.View('stirr#edit');
@@ -24,4 +24,16 @@ angular
       });
     };
 
+    var addBtn = new supersonic.ui.NavigationBarButton({
+      styleId: 'home-nav-add',
+      onTap: _newRecipe
+    });
+
+    supersonic.ui.navigationBar.update({
+      title: 'stirr',
+      overrideBackButton: false,
+      buttons: {
+        right: [addBtn]
+      }
+    }).then(supersonic.ui.navigationBar.show());
   });

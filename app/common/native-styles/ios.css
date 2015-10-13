@@ -19,6 +19,10 @@ navigation-bar button, navigation-bar back-bar-button {
   font-weight: 300;
 }
 
+#home-nav-add icon {
+  background-image: url(icons/ios-plus-empty.svg);
+}
+
 tab-bar {
   background-color: #ffffff;
   border-top: 1px #d8d8d8 solid;
@@ -44,12 +48,4 @@ tab-bar-item#index {
 
 tab-bar-item#internet {
   background-image: url(icons/search.svg);
-}
-
-#back-button icon {
-  background-image: url(icons/arrow-left-c.svg);
-}
-
-#save-button icon {
-  background-image: url(icons/checkmark-round.svg);
 }
