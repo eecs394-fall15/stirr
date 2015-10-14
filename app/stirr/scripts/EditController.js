@@ -15,9 +15,12 @@ angular
 
     var _back = function() {
       if ($scope.changed) {
-        alert('changed');
+        if (window.confirm('Discard unsaved changes?')) {
+          supersonic.ui.layers.pop();
+        }
+      } else {
+        supersonic.ui.layers.pop();
       }
-      supersonic.ui.layers.pop();
     };
 
     var _save = function() {
@@ -153,14 +156,8 @@ angular
       }).then(_uploadBase64ToParse);
     };
 
-    var _changed = function() {
+    $scope.change = function() {
       $scope.changed = true;
+      alert('changed');
     }
-
-    $scope.$watch('recipe', _changed);
-    $scope.$watch('ingredients', _changed);
-    $scope.$watch('actions', _changed);
-    $scope.$watch('time', _changed);
-    $scope.$watch('name', _changed);
-    $scope.$watch('url', _changed);
   });
