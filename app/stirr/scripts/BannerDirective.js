@@ -32,11 +32,15 @@ angular
           if (imgWidth / imgHeight < (3 / 2)) {
             angular.element(img)
                 .css('width', targetWidth.toString() + 'px')
-                .css('height', (targetWidth / imgRatio).toString() + 'px');
+                .css('height', (targetWidth / imgRatio).toString() + 'px')
+                .css('top', -(((targetWidth / imgRatio) - targetHeight) / 2)
+                    .toString() + 'px');
           } else {
             angular.element(img)
                 .css('width', (targetHeight * imgRatio).toString() + 'px')
-                .css('height', targetHeight.toString() + 'px');
+                .css('height', targetHeight.toString() + 'px')
+                .css('left', -(((targetHeight * imgRatio) - targetWidth) / 2)
+                    .toString() + 'px');
           }
         };
 
