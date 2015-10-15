@@ -42,7 +42,7 @@ angular
           __type: 'File',
           name: $scope.name,
           url: $scope.url
-        }
+        };
 
         $scope.recipe.save().then(function() {
           $scope.$apply(function($scope) {
@@ -140,7 +140,7 @@ angular
           $scope.url = file.url();
         });
       });
-    }
+    };
 
     $scope.uploadImage = function() {
       supersonic.media.camera.getFromPhotoLibrary({
@@ -159,5 +159,5 @@ angular
     $scope.change = function() {
       $scope.changed = true;
       alert('changed');
-    }
+    };
   });
