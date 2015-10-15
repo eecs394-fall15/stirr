@@ -33,6 +33,10 @@ navigation-bar back-button {
   font-weight: 300;
 }
 
+#home-nav-add {
+  background-image: url(icons/android-add.svg);
+}
+
 /**************************************
  *  Tab Bar
  *************************************/

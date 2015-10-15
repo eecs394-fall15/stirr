@@ -19,6 +19,10 @@ navigation-bar button, navigation-bar back-bar-button {
   font-weight: 300;
 }
 
+#home-nav-add icon {
+  background-image: url(icons/ios-plus-empty.svg);
+}
+
 tab-bar {
   background-color: #ffffff;
   border-top: 1px #d8d8d8 solid;
