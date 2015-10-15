@@ -115,6 +115,7 @@ angular
     $scope.uploadImage = function() {
       supersonic.media.camera.getFromPhotoLibrary({
         encodingType: 'png',
+        quality:20,
         destinationType: 'dataURL'
       }).then(_uploadBase64ToParse);
     };
