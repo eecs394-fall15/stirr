@@ -158,6 +158,5 @@ angular
 
     $scope.change = function() {
       $scope.changed = true;
-      alert('changed');
     };
   });

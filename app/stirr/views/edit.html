@@ -26,15 +26,15 @@
         <div class="item list">
           <label class="item item-input">
             <span class="input-label">Recipe Name:</span>
-            <input type="text" name="name" ng-model="recipe.name" placeholder="Enter name">
+            <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Enter name">
           </label>
           <label class="item item-input">
             <span class="input-label">Author:</span>
-            <input type="text" name="author" ng-model="recipe.author" placeholder="Enter author name">
+            <input type="text" name="author" ng-model="recipe.author" ng-change="change()" placeholder="Enter author name">
           </label>
           <label class="item item-input">
             <span class="input-label">Description:</span>
-            <input type="text" name="description" ng-model="recipe.description" placeholder="Enter a description">
+            <input type="text" name="description" ng-model="recipe.description" ng-change="change()" placeholder="Enter a description">
           </label>
         </div>
       </div>
@@ -45,10 +45,10 @@
         <div class="item list" ng-repeat="ingredient in ingredients">
           <div class="item item-input">
             <div>
-              <input type="text" name="name" ng-model="ingredient.name" placeholder="Enter ingredient">
+              <input type="text" name="name" ng-model="ingredient.name" ng-change="change()" placeholder="Enter ingredient">
             </div>
             <div>
-              <input type="text" name="quantity" ng-model="ingredient.quantity" placeholder="Enter quantity">
+              <input type="text" name="quantity" ng-model="ingredient.quantity" ng-change="change()" placeholder="Enter quantity">
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
         <div class="item list" ng-repeat="action in actions">
           <label class="item item-input">
             <span class="input-label">Step {{ $index + 1 }}:</span>
-            <input type="text" name="step" ng-model="action.step" placeholder="Enter instructions">
+            <input type="text" name="step" ng-model="action.step" ng-change="change()" placeholder="Enter instructions">
           </label>
         </div>
         <button class="button button-block button-positive" ng-click="addAction()">
