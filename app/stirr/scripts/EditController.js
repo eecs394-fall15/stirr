@@ -135,6 +135,7 @@ angular
           Date.now().toString(), {base64: base64}, 'image/png');
       file.save().then(function() {
         supersonic.logger.info('file saved');
+        $scope.change();
         $scope.$apply(function($scope) {
           $scope.name = file.name();
           $scope.url = file.url();
