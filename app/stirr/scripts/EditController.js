@@ -19,11 +19,6 @@ angular
           supersonic.ui.layers.pop();
         }
       } else {
-        // view = new supersonic.ui.View("stirr#home");
-        // view.start("view").then( function(startedView) {
-        //   supersonic.ui.layers.replace(startedView);
-        // });
-
         supersonic.ui.layers.pop();
       }
     };

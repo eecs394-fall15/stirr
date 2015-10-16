@@ -39,8 +39,8 @@ angular
 
     supersonic.ui.navigationBar.update(_options);
 
-    $scope.$apply();
-    Recipe.find(steroids.view.params.id).then(
+    var _getRecipe = function() {
+      Recipe.find(steroids.view.params.id).then(
       function(recipe) {
         $scope.$apply(function($scope) {
           $scope.recipe = recipe;
@@ -63,6 +63,9 @@ angular
       function(errorMsg) {
         $scope.showSpinner = false;
         $scope.errorMsg = errorMsg;
-      });
+      })
+    };
+
+    supersonic.ui.views.current.whenVisible(_getRecipe);
 
   });
