@@ -2,7 +2,7 @@ angular
   .module('stirr')
   .directive('stirrBanner', function() {
     return {
-      link: function(scope, $element, attrs) {
+      link: function($scope, $element, attrs) {
         var targetWidth = null;
         var targetHeight = null;
         var imgLoaded = false;
@@ -45,6 +45,10 @@ angular
         };
 
         $img.on('load', function() {
+          supersonic.logger.info('banner loaded');
+          $scope.$apply(function($scope) {
+            $scope.showImageSpinner = false;
+          });
           imgLoaded = true;
           setImageDimensions(this);
         });

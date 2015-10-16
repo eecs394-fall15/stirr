@@ -1,50 +1,80 @@
 angular
   .module('stirr')
   .controller('EditController', function($scope, Recipe, supersonic) {
+
     $scope.recipe = null;
     $scope.errorMsg = null;
     $scope.showSpinner = true;
+    $scope.showImageSpinner = true;
+    $scope.ingredients = null;
+    $scope.actions = null;
+    $scope.time = null;
+    $scope.name = null;
+    $scope.url = '/food-placeholder.png';
+    $scope.changed = false;
 
     var _back = function() {
-      if ($scope.recipe) {
-        $scope.showSpinner = true;
-
-        // check for empty ingredients and steps
-        $scope.recipe.ingredients = checkEmpty(
-          $scope.recipe.ingredients, 'name');
-        $scope.recipe.actions = checkEmpty(
-          $scope.recipe.actions, 'step');
-
-        // convert recipe JSON into strings
-        $scope.recipe.ingredients = angular.toJson($scope.recipe.ingredients);
-        $scope.recipe.actions = angular.toJson($scope.recipe.actions);
-        $scope.recipe.time = angular.toJson($scope.recipe.time);
-
-        $scope.recipe.save().then(function() {
-          $scope.showSpinner = false;
+      if ($scope.changed) {
+        if (window.confirm('Discard unsaved changes?')) {
           supersonic.ui.layers.pop();
-        });
+        }
       } else {
         supersonic.ui.layers.pop();
       }
     };
 
+    var _save = function() {
+      if ($scope.recipe) {
+        $scope.$apply(function($scope) {
+          $scope.showSpinner = true;
+        });
+
+        // check for empty ingredients and steps
+        $scope.ingredients = checkEmpty($scope.ingredients, 'name');
+        $scope.actions = checkEmpty($scope.actions, 'step');
+
+        // convert recipe JSON into strings
+        $scope.recipe.ingredients = angular.toJson($scope.ingredients);
+        $scope.recipe.actions = angular.toJson($scope.actions);
+        $scope.recipe.time = angular.toJson($scope.time);
+
+        $scope.recipe.image = {
+          __type: 'File',
+          name: $scope.name,
+          url: $scope.url
+        };
+
+        $scope.recipe.save().then(function() {
+          $scope.$apply(function($scope) {
+            $scope.showSpinner = false;
+          });
+          $scope.changed = false;
+        });
+      }
+    };
+
     var _backButton = new supersonic.ui.NavigationBarButton({
-      title: 'Back',
+      styleId: 'back-button',
       onTap: _back
+    });
+
+    var _saveButton = new supersonic.ui.NavigationBarButton({
+      styleId: 'save-button',
+      onTap: _save
     });
 
     var _options = {
       title: 'stirr',
       overrideBackButton: true,
       buttons: {
-        left: [_backButton]
+        left: [_backButton],
+        right: [_saveButton]
       }
     };
 
     supersonic.ui.navigationBar.update(_options);
 
-    supersonic.device.buttons.back.whenPressed(_back);
+    // supersonic.device.buttons.back.whenPressed(_back);
 
     // Fetch an object based on id from the database
     Recipe.find(steroids.view.params.id).then(
@@ -52,14 +82,20 @@ angular
           $scope.$apply(function($scope) {
             $scope.recipe = recipe;
 
+            if ($scope.recipe.image) {
+              $scope.name = $scope.recipe.image.name;
+              $scope.url = $scope.recipe.image.url;
+            }
+
             // Parse string json into in json object
-            $scope.recipe.ingredients =
+            $scope.ingredients =
                 JSON.parse($scope.recipe.ingredients || '[]');
-            $scope.recipe.actions = JSON.parse($scope.recipe.actions || '[]');
-            $scope.recipe.time = JSON.parse($scope.recipe.time || '{}');
+            $scope.actions = JSON.parse($scope.recipe.actions || '[]');
+            $scope.time = JSON.parse($scope.recipe.time || '{}');
 
             $scope.showSpinner = false;
           });
+          $scope.changed = false;
         },
         function(errorMsg) {
           $scope.showSpinner = false;
@@ -67,11 +103,11 @@ angular
         });
 
     $scope.addIngredient = function() {
-      $scope.recipe.ingredients.push({'name': '', 'quantity': ''});
+      $scope.ingredients.push({'name': '', 'quantity': ''});
     };
 
     $scope.addAction = function() {
-      $scope.recipe.actions.push({'step': ''});
+      $scope.actions.push({'step': ''});
     };
 
     /**
@@ -93,24 +129,19 @@ angular
     };
 
     var _uploadBase64ToParse = function(base64) {
-      $scope.$apply(function($scope) {
-        $scope.showSpinner = true;
-      });
-
+      supersonic.logger.info('uploading');
+      $scope.showImageSpinner = true;
       var file = new Parse.File(
           Date.now().toString(), {base64: base64}, 'image/png');
       file.save().then(function() {
-        var url = file.url();
+        supersonic.logger.info('file saved');
+        $scope.change();
         $scope.$apply(function($scope) {
-          $scope.showSpinner = false;
-          $scope.recipe.image = {
-            __type: "File",
-            name: file.name(),
-            url: file.url()
-          };
+          $scope.name = file.name();
+          $scope.url = file.url();
         });
       });
-    }
+    };
 
     $scope.uploadImage = function() {
       supersonic.media.camera.getFromPhotoLibrary({
@@ -126,4 +157,7 @@ angular
       }).then(_uploadBase64ToParse);
     };
 
+    $scope.change = function() {
+      $scope.changed = true;
+    };
   });
