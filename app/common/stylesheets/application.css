@@ -107,3 +107,45 @@
   padding: 0;
   margin: 0;
 }
+
+.stirr-fake-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+  line-height: 0;
+}
+
+.stirr-fake-tabs button {
+  border: none !important;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  height: 47px;
+  width: 50%;
+  background-color: #00B5FF;
+}
+
+.stirr-fake-tabs button.active {
+  color: white;
+}
+
+.stirr-indicator {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  height: 3px;
+  width: 50%;
+  background-color: #00B5FF;
+}
+
+.stirr-indicator.active {
+  background-color: white;
+}
+
+.stirr-spacer {
+  height: 50px;
+}

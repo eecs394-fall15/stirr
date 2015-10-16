@@ -38,17 +38,24 @@ angular
         $scope.recipe.actions = angular.toJson($scope.actions);
         $scope.recipe.time = angular.toJson($scope.time);
 
-        $scope.recipe.image = {
-          __type: 'File',
-          name: $scope.name,
-          url: $scope.url
-        };
+        if ($scope.name) {
+          $scope.recipe.image = {
+            __type: 'File',
+            name: $scope.name,
+            url: $scope.url
+          };
+        }
 
         $scope.recipe.save().then(function() {
           $scope.$apply(function($scope) {
             $scope.showSpinner = false;
           });
           $scope.changed = false;
+        }, function(error) {
+          window.alert(error);
+          $scope.$apply(function($scope) {
+            $scope.showSpinner = false;
+          });
         });
       }
     };
