@@ -39,7 +39,7 @@ angular
       });
     };
 
-    _getRecipes();
+    supersonic.ui.views.current.whenVisible(_getRecipes);
 
     $scope.filter = function(enabled) {
       $scope.filtering = enabled;
