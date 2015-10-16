@@ -124,7 +124,7 @@
   font-size: 30px;
   margin: 0;
   padding: 0;
-  height: 50px;
+  height: 47px;
   width: 50%;
   background-color: #00B5FF;
 }
@@ -144,4 +144,8 @@
 
 .stirr-indicator.active {
   background-color: white;
+}
+
+.stirr-spacer {
+  height: 50px;
 }
