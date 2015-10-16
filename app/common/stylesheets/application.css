@@ -10,7 +10,7 @@
   padding: 0px;
 }
 
-[ng-controller="EditController"] .list {
+.stirr-list {
   margin-bottom: 0px;
 }
 
@@ -57,7 +57,7 @@
   margin: 10px 10px 10px 0;
   border: none !important;
   border-radius: 50%;
-  background: #387ef5;
+  background-color: #387ef5;
   line-height: 60px;
   text-align: center;
   font-size: 25px;
@@ -148,4 +148,19 @@
 
 .stirr-spacer {
   height: 50px;
+}
+
+.stirr-edit-form {
+  margin: 0;
+}
+
+.stirr-item-divider {
+  text-align: center;
+  font-weight: bold;
+  background-color: #00B5FF;
+  color: white;
+}
+
+.stirr-input-by {
+  width: 2.0em;
 }

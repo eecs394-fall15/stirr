@@ -19,56 +19,41 @@
       </div>
     </div>
     <form>
-      <div class="card">
-        <div class="item item-divider">
-          Recipe Information
-        </div>
-        <div class="item list">
+      <div class="card stirr-edit-form">
+        <div class="item list stirr-list">
           <label class="item item-input">
-            <span class="input-label">Recipe Name:</span>
-            <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Enter name">
+            <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Title" style="font-weight: bold">
           </label>
           <label class="item item-input">
-            <span class="input-label">Author:</span>
-            <input type="text" name="author" ng-model="recipe.author" ng-change="change()" placeholder="Enter author name">
+            <span class="input-label stirr-input-by">By</span>
+            <input type="text" name="author" ng-model="recipe.author" ng-change="change()" placeholder="Author">
           </label>
           <label class="item item-input">
-            <span class="input-label">Description:</span>
-            <input type="text" name="description" ng-model="recipe.description" ng-change="change()" placeholder="Enter a description">
+            <input type="text" name="description" ng-model="recipe.description" ng-change="change()" placeholder="Description">
           </label>
         </div>
-      </div>
-      <div class="card">
-        <div class="item item-divider">
+        <div class="item stirr-item-divider">
           Ingredients
         </div>
-        <div class="item list" ng-repeat="ingredient in ingredients">
+        <div class="item list stirr-list" ng-repeat="ingredient in ingredients">
           <div class="item item-input">
             <div>
-              <input type="text" name="name" ng-model="ingredient.name" ng-change="change()" placeholder="Enter ingredient">
+              <input type="text" name="name" ng-model="ingredient.name" ng-change="change()" placeholder="Ingredient">
             </div>
             <div>
-              <input type="text" name="quantity" ng-model="ingredient.quantity" ng-change="change()" placeholder="Enter quantity">
+              <input type="text" name="quantity" ng-model="ingredient.quantity" ng-change="change()" placeholder="Quantity">
             </div>
           </div>
         </div>
-        <button class="button button-block button-positive" ng-click="addIngredient()">
-          Add Ingredient
-        </button>
-      </div>
-      <div class="card">
-        <div class="item item-divider">
-          Instructions
+        <div class="item stirr-item-divider">
+          Steps
         </div>
-        <div class="item list" ng-repeat="action in actions">
+        <div class="item list stirr-list" ng-repeat="action in actions">
           <label class="item item-input">
-            <span class="input-label">Step {{ $index + 1 }}:</span>
-            <input type="text" name="step" ng-model="action.step" ng-change="change()" placeholder="Enter instructions">
+            <span class="input-label">{{ $index + 1 }}.</span>
+            <input type="text" name="step" ng-model="action.step" ng-change="change()" placeholder="Step">
           </label>
         </div>
-        <button class="button button-block button-positive" ng-click="addAction()">
-          Add Action
-        </button>
       </div>
     </form>
   </div>
