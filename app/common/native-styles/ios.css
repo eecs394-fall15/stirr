@@ -57,3 +57,7 @@ tab-bar-item#internet {
 #save-button icon {
   background-image: url(icons/ios-checkmark-outline.svg);
 }
+
+#edit-button icon {
+  background-image: url(icons/edit.svg);
+}

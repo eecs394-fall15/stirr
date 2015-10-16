@@ -10,7 +10,7 @@
   padding: 0px;
 }
 
-[ng-controller="EditController"] .list {
+.list {
   margin-bottom: 0px;
 }
 

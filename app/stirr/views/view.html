@@ -1,17 +1,48 @@
 <div class="padding" ng-controller="ViewController">
-
-  <super-navbar>
-    <super-navbar-title>
-      View
-    </super-navbar-title>
-  </super-navbar>
-
-  <h1>Here are all the current dishes: </h1>
-  <div ng-repeat="dish in dishes">
-    <img ng-src="{{ dish.icon }}" ng-if="dish.icon">
-    <h1>{{ dish.name }}</h1>
-    <h2>{{ dish.prepTime }}</h2>
-    <h2>{{ dish.author }}</h2>
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div class="stirr-banner">
+      <img ng-src="{{ url }}">
+    </div>
+    <div class="card">
+      <div class="item item-divider">
+        Recipe Information
+      </div>
+      <div class="item list">
+        <label class="item item-input">
+          <span class="input-label">Recipe Name:</span>
+          <span>{{ recipe.name }}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Author:</span>
+          <span>{{ recipe.author }}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Description:</span>
+          <span>{{ recipe.description }}</span>
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-divider">
+        Ingredients
+      </div>
+      <div class="item list" ng-repeat="ingredient in ingredients">
+        <label class="item item-input">
+          <span class="input-label">{{ ingredient.name }}</span>
+          <span>{{ ingredient.quantity }}</span>
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-divider">
+        Instructions
+      </div>
+      <div class="item list" ng-repeat="action in actions">
+        <label class="item item-input">
+          <span class="input-label">Step {{ $index + 1 }}:</span>
+          <span>{{ action.step }}</span>
+        </label>
+      </div>
+    </div>
   </div>
-
 </div>

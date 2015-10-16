@@ -1,7 +1,7 @@
 <div class="padding" ng-controller="HomeController">
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
-    <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+    <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
       <div class="stirr-banner">
         <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
         <div class="stirr-overlay">
