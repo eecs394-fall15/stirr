@@ -1,9 +1,20 @@
 angular
   .module('stirr')
   .controller('ViewController', function($scope, Recipe, supersonic) {
+    if(steroids.view.params.bypass) {
+      var editView = new supersonic.ui.View('stirr#edit');
+      supersonic.ui.layers.push(editView, {
+        params: {
+          id: steroids.view.params.id
+        }
+      });
+    }
+
     $scope.recipe = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
+    $scope.name = null;
+    $scope.url = '/food-placeholder.png';
 
     var _back = function() {
       supersonic.ui.layers.pop();

@@ -51,10 +51,11 @@ angular
         var recipe = new Recipe({});
         recipe.uuid = device.uuid;
         recipe.save().then(function() {
-          var view = new supersonic.ui.View('stirr#edit');
-          supersonic.ui.layers.push(view, {
+          var viewView = new supersonic.ui.View('stirr#view');
+          supersonic.ui.layers.push(viewView, {
             params: {
-              id: recipe.id
+              id: recipe.id,
+              bypass: true
             }
           });
         });
