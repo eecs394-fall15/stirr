@@ -83,6 +83,26 @@
   color: white;
 }
 
+.stirr-image-spinner {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stirr-vertical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.stirr-image-spinner .stirr-vertical-center {
+  text-align: center;
+}
+
 #new-recipe-button {
   padding: 0;
   margin: 0;
