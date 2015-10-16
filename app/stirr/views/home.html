@@ -1,6 +1,10 @@
 <div class="padding" ng-controller="HomeController">
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
+    <div class="stirr-fake-tabs">
+      <div class="stirr-indicator" ng-class="{active: filtering}"></div><div class="stirr-indicator" ng-class="{active: !filtering}"></div>
+      <button  ng-class="{active: filtering}" ng-click="filter(true)"><i class="icon super-ios-person"></i></button><button ng-class="{active: !filtering}" ng-click="filter(false)"><i class="icon super-ios-people"></i></button>
+    </div>
     <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
       <div class="stirr-banner">
         <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
@@ -13,6 +17,6 @@
     <h4 ng-show="recipes.length == 0" class="assertive padding">
       No recipes found. Create one?
     </h4>
-    </div>
+    <div class="stirr-spacer"></div>
   </div>
 </div>
