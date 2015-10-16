@@ -2,23 +2,18 @@
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div class="stirr-banner">
       <img ng-src="{{ url }}">
+      <div class="stirr-overlay">
+        <h2>{{ recipe.name }}</h2>
+        <h3>By {{ recipe.author }}</h3>
+      </div>
     </div>
     <div class="card">
       <div class="item item-divider">
-        Recipe Information
+        Description
       </div>
       <div class="item list">
         <label class="item item-input">
-          <span class="input-label">Recipe Name:</span>
-          <span>{{ recipe.name }}</span>
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Author:</span>
-          <span>{{ recipe.author }}</span>
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Description:</span>
-          <span>{{ recipe.description }}</span>
+          <span class="input-label">{{ recipe.description }}</span>
         </label>
       </div>
     </div>
