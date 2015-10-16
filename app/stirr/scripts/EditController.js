@@ -49,6 +49,11 @@ angular
             $scope.showSpinner = false;
           });
           $scope.changed = false;
+        }, function(error) {
+          window.alert(error);
+          $scope.$apply(function($scope) {
+            $scope.showSpinner = false;
+          });
         });
       }
     };

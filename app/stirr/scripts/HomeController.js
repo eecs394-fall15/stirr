@@ -2,7 +2,7 @@ angular
   .module('stirr')
   .controller('HomeController', function($scope, Recipe, supersonic) {
 
-    $scope.allRecipes = null;
+    $scope.recipes = null;
     $scope.showSpinner = true;
     $scope.filtering = true;
 
