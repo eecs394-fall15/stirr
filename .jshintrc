@@ -9,6 +9,7 @@
     "steroids": true,
     "supersonic": true,
     "_": true,
-    "Parse": true
+    "Parse": true,
+    "device": true
   }
 }

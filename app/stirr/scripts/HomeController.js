@@ -2,8 +2,9 @@ angular
   .module('stirr')
   .controller('HomeController', function($scope, Recipe, supersonic) {
 
-    $scope.recipes = null;
+    $scope.allRecipes = null;
     $scope.showSpinner = true;
+    $scope.filtering = true;
 
     var deviceReady = false;
 
@@ -19,12 +20,31 @@ angular
       deviceReady = true;
     });
 
-    Recipe.all().whenChanged(function(recipes) {
-      $scope.$apply(function() {
-        $scope.recipes = recipes;
-        $scope.showSpinner = false;
+    var _getRecipes = function() {
+      $scope.showSpinner = true;
+      _whenDeviceReady(function() {
+        var unsubscribe = Recipe.all().whenChanged(function(recipes) {
+          $scope.$apply(function() {
+            if ($scope.filtering) {
+              $scope.recipes = recipes.filter(function(recipe) {
+                return recipe.uuid === device.uuid;
+              });
+            } else {
+              $scope.recipes = recipes;
+            }
+            $scope.showSpinner = false;
+          });
+          unsubscribe();
+        });
       });
-    });
+    };
+
+    _getRecipes();
+
+    $scope.filter = function(enabled) {
+      $scope.filtering = enabled;
+      _getRecipes();
+    };
 
     var _newRecipe = function() {
       _whenDeviceReady(function() {
