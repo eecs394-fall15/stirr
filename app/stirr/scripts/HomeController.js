@@ -7,6 +7,14 @@ angular
 
     var deviceReady = false;
 
+    var _whenDeviceReady = function(callback) {
+      if (deviceReady) {
+        callback();
+      } else {
+        angular.element(document).on('deviceready', callback);
+      }
+    };
+
     angular.element(document).on('deviceready', function() {
       deviceReady = true;
     });
@@ -19,7 +27,7 @@ angular
     });
 
     var _newRecipe = function() {
-      var whenDeviceReady = function() {
+      _whenDeviceReady(function() {
         var recipe = new Recipe({});
         recipe.uuid = device.uuid;
         recipe.save().then(function() {
@@ -30,12 +38,7 @@ angular
             }
           });
         });
-      };
-      if (deviceReady) {
-        whenDeviceReady();
-      } else {
-        angular.element(document).on('deviceready', whenDeviceReady);
-      }
+      });
     };
 
     var addBtn = new supersonic.ui.NavigationBarButton({
