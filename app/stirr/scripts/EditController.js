@@ -150,6 +150,7 @@ angular
 
     $scope.uploadImage = function() {
       supersonic.media.camera.getFromPhotoLibrary({
+        quality: 50,
         encodingType: 'png',
         destinationType: 'dataURL'
       }).then(_uploadBase64ToParse);
@@ -157,6 +158,7 @@ angular
 
     $scope.snapImage = function() {
       supersonic.media.camera.takePicture({
+        quality: 50,
         encodingType: 'png',
         destinationType: 'dataURL'
       }).then(_uploadBase64ToParse);
