@@ -5,6 +5,12 @@ angular
     $scope.recipes = null;
     $scope.showSpinner = true;
 
+    var deviceReady = false;
+
+    angular.element(document).on('deviceready', function() {
+      deviceReady = true;
+    });
+
     Recipe.all().whenChanged(function(recipes) {
       $scope.$apply(function() {
         $scope.recipes = recipes;
@@ -13,15 +19,23 @@ angular
     });
 
     var _newRecipe = function() {
-      var recipe = new Recipe({});
-      recipe.save().then(function() {
-        var view = new supersonic.ui.View('stirr#edit');
-        supersonic.ui.layers.push(view, {
-          params: {
-            id: recipe.id
-          }
+      var whenDeviceReady = function() {
+        var recipe = new Recipe({});
+        recipe.uuid = device.uuid;
+        recipe.save().then(function() {
+          var view = new supersonic.ui.View('stirr#edit');
+          supersonic.ui.layers.push(view, {
+            params: {
+              id: recipe.id
+            }
+          });
         });
-      });
+      };
+      if (deviceReady) {
+        whenDeviceReady();
+      } else {
+        angular.element(document).on('deviceready', whenDeviceReady);
+      }
     };
 
     var addBtn = new supersonic.ui.NavigationBarButton({
