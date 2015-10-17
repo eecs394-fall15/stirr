@@ -25,16 +25,20 @@
         </div>
         <div class="item list">
           <label class="item item-input">
-            <span class="input-label">Recipe Name:</span>
+            <p class="input-label">Recipe Name:</p>
             <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Enter name">
           </label>
+        </div>
+        <div class="item list">
           <label class="item item-input">
-            <span class="input-label">Author:</span>
+            <p class="input-label">Author:</p>
             <input type="text" name="author" ng-model="recipe.author" ng-change="change()" placeholder="Enter author name">
           </label>
+        </div>
+        <div class="item list">
           <label class="item item-input">
-            <span class="input-label">Description:</span>
-            <input type="text" name="description" ng-model="recipe.description" ng-change="change()" placeholder="Enter a description">
+            <p class="input-label">Description:</p>
+            <textarea name="description" ng-model="recipe.description" ng-change="change()" placeholder="Enter a description"></textarea>
           </label>
         </div>
       </div>
@@ -62,7 +66,7 @@
         </div>
         <div class="item list" ng-repeat="action in actions">
           <label class="item item-input">
-            <span class="input-label">Step {{ $index + 1 }}:</span>
+            <p class="input-label">Step {{ $index + 1 }}:</p>
             <input type="text" name="step" ng-model="action.step" ng-change="change()" placeholder="Enter instructions">
           </label>
         </div>
