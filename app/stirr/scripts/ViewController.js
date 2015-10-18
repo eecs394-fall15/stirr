@@ -1,7 +1,7 @@
 angular
   .module('stirr')
   .controller('ViewController', function($scope, Recipe, supersonic) {
-    if(steroids.view.params.bypass) {
+    if (steroids.view.params.bypass) {
       var editView = new supersonic.ui.View('stirr#edit');
       supersonic.ui.layers.push(editView, {
         params: {
@@ -74,7 +74,7 @@ angular
       function(errorMsg) {
         $scope.showSpinner = false;
         $scope.errorMsg = errorMsg;
-      })
+      });
     };
 
     supersonic.ui.views.current.whenVisible(_getRecipe);
