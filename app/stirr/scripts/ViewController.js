@@ -1,6 +1,7 @@
 angular
   .module('stirr')
   .controller('ViewController', function($scope, Recipe, supersonic) {
+    var deviceID = device.uuid;
     if (steroids.view.params.bypass) {
       var editView = new supersonic.ui.View('stirr#edit');
       supersonic.ui.layers.push(editView, {
@@ -39,17 +40,6 @@ angular
       onTap: _edit
     });
 
-    var _options = {
-      title: 'stirr',
-      overrideBackButton: true,
-      buttons: {
-        left: [_backButton],
-        right: [_editButton]
-      }
-    };
-
-    supersonic.ui.navigationBar.update(_options);
-
     var _getRecipe = function() {
       Recipe.find(steroids.view.params.id).then(
       function(recipe) {
@@ -67,6 +57,8 @@ angular
           $scope.actions = JSON.parse($scope.recipe.actions || '[]');
           $scope.time = JSON.parse($scope.recipe.time || '{}');
 
+          _updateMenu();
+
           $scope.showSpinner = false;
         });
         $scope.changed = false;
@@ -75,6 +67,30 @@ angular
         $scope.showSpinner = false;
         $scope.errorMsg = errorMsg;
       });
+    };
+
+    var _updateMenu = function() {
+      var _options;
+      if ($scope.recipe.uuid == deviceID) {
+        _options = {
+          title: 'stirr',
+          overrideBackButton: true,
+          buttons: {
+            left: [_backButton],
+            right: [_editButton]
+          }
+        };
+      } else {
+        _options = {
+          title: 'stirr',
+          overrideBackButton: true,
+          buttons: {
+            left: [_backButton]
+          }
+        };
+      }
+
+      supersonic.ui.navigationBar.update(_options);
     };
 
     supersonic.ui.views.current.whenVisible(_getRecipe);
