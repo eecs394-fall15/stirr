@@ -5,7 +5,7 @@
       <div class="stirr-indicator" ng-class="{active: filtering}"></div><div class="stirr-indicator" ng-class="{active: !filtering}"></div>
       <button  ng-class="{active: filtering}" ng-click="filter(true)"><i class="icon super-ios-person"></i></button><button ng-class="{active: !filtering}" ng-click="filter(false)"><i class="icon super-ios-people"></i></button>
     </div>
-    <super-navigate location="stirr#edit" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+    <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
       <div class="stirr-banner">
         <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
         <div class="stirr-overlay">
