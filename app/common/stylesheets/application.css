@@ -88,6 +88,14 @@ label p, label textarea {
   line-height: 20px;
 }
 
+.ingredient {
+  width: 50%;
+}
+
+.item-input input {
+  text-overflow: ellipsis;
+}
+
 .stirr-image-spinner {
   display: table;
   position: absolute;
