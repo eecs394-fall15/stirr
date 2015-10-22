@@ -1,0 +1,27 @@
+{
+  "name": "Coca-Cola Chicken",
+  "author": "Adrien",
+  "description": "A Chinese college student favorite.",
+  "ingredients": [
+    {"name": "Chicken thighs", "quantity": "3"},
+    {"name": "Shaoxing rice wine", "quantity": "1 glug"},
+    {"name": "Corn starch", "quantity": "1 tbsp"},
+    {"name": "Garlic cloves, roughly chopped", "quantity": "3"},
+    {"name": "Ginger, finely chopped", "quantity": "1 knob"},
+    {"name": "Dried chili peppers", "quantity": "At your discretion"},
+    {"name": "Coca-Cola", "quantity": "1 can"},
+    {"name": "Soy sauce", "quantity": "2 tbsp"},
+    {"name": "Green onions, chopped", "quantity": "2"}
+  ],
+  "actions": [
+    {"step": "Marinate the chicken in the cooking wine, corn starch, and salt."},
+    {"step": "Stir fry the garlic, ginger, and dried chili peppers with a splash of oil on medium heat in a wok until fragrant."},
+    {"step": "Turn up the heat to high and brown the chicken with the spices."},
+    {"step": "Deglaze the wok with the Coca-Cola and the soy sauce."},
+    {"step": "Reduce the heat and simmer until the sauce thickens."},
+    {"step": "Stir in the green onions and serve immediately."}
+  ],
+  "time": {},
+  "image": "coca-cola-chicken.jpg",
+  "uuid": "147c1cd088644efb"
+}
