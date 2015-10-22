@@ -1,7 +1,6 @@
 angular
   .module('stirr')
   .controller('ViewController', function($scope, Recipe, supersonic) {
-    var deviceID = device.uuid;
     if (steroids.view.params.bypass) {
       var editView = new supersonic.ui.View('stirr#edit');
       supersonic.ui.layers.push(editView, {
@@ -16,6 +15,20 @@ angular
     $scope.dataId = undefined;
     $scope.name = null;
     $scope.url = '/food-placeholder.png';
+
+    var deviceReady = false;
+
+    var _whenDeviceReady = function(callback) {
+      if (deviceReady) {
+        callback();
+      } else {
+        angular.element(document).on('deviceready', callback);
+      }
+    };
+
+    angular.element(document).on('deviceready', function() {
+      deviceReady = true;
+    });
 
     var _back = function() {
       supersonic.ui.layers.pop();
@@ -70,27 +83,29 @@ angular
     };
 
     var _updateMenu = function() {
-      var _options;
-      if ($scope.recipe.uuid == deviceID) {
-        _options = {
-          title: 'stirr',
-          overrideBackButton: true,
-          buttons: {
-            left: [_backButton],
-            right: [_editButton]
-          }
-        };
-      } else {
-        _options = {
-          title: 'stirr',
-          overrideBackButton: true,
-          buttons: {
-            left: [_backButton]
-          }
-        };
-      }
-
-      supersonic.ui.navigationBar.update(_options);
+      _whenDeviceReady(function() {
+        var _options;
+        var deviceID = device.uuid;
+        if ($scope.recipe.uuid == deviceID) {
+          _options = {
+            title: 'stirr',
+            overrideBackButton: true,
+            buttons: {
+              left: [_backButton],
+              right: [_editButton]
+            }
+          };
+        } else {
+          _options = {
+            title: 'stirr',
+            overrideBackButton: true,
+            buttons: {
+              left: [_backButton]
+            }
+          };
+        }
+        supersonic.ui.navigationBar.update(_options);
+      });
     };
 
     supersonic.ui.views.current.whenVisible(_getRecipe);
