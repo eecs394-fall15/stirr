@@ -115,4 +115,8 @@ angular
 
     supersonic.ui.views.current.whenVisible(_getRecipe);
 
+    supersonic.data.channel('editPop').subscribe(function (recipeId) {
+      alert(recipeId);
+    });
+
   });
