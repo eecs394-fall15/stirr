@@ -2,8 +2,14 @@
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <div class="stirr-fake-tabs">
-      <div class="stirr-indicator" ng-class="{active: filtering}"></div><div class="stirr-indicator" ng-class="{active: !filtering}"></div>
-      <button  ng-class="{active: filtering}" ng-click="filter(true)"><i class="icon super-ios-person"></i></button><button ng-class="{active: !filtering}" ng-click="filter(false)"><i class="icon super-ios-people"></i></button>
+      <div class="stirr-indicator" ng-class="{active: filtering}"></div>
+      <div class="stirr-indicator" ng-class="{active: !filtering}"></div>
+      <button  ng-class="{active: filtering}" ng-click="filter(true)">
+        <i class="icon super-ios-person"></i>
+      </button>
+      <button ng-class="{active: !filtering}" ng-click="filter(false)">
+        <i class="icon super-ios-people"></i>
+      </button>
     </div>
     <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
       <div class="stirr-banner">
