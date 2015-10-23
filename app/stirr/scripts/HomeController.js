@@ -25,12 +25,17 @@ angular
       _whenDeviceReady(function() {
         Recipe.findAll().then(function(recipes) {
           $scope.$apply(function() {
+            recipes = recipes.filter(function(recipe) {
+              return !recipe.parentId;
+            });
             if ($scope.filtering) {
               $scope.recipes = recipes.filter(function(recipe) {
                 return recipe.uuid === device.uuid;
               });
             } else {
-              $scope.recipes = recipes;
+              $scope.recipes = recipes.filter(function(recipe) {
+                return recipe.uuid !== device.uuid;
+              });
             }
             $scope.showSpinner = false;
           });
