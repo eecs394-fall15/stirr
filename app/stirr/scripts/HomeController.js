@@ -30,7 +30,9 @@ angular
                 return recipe.uuid === device.uuid;
               });
             } else {
-              $scope.recipes = recipes;
+              $scope.recipes = recipes.filter(function(recipe) {
+                return !recipe.parentId && recipe.uuid !== device.uuid;
+              });
             }
             $scope.showSpinner = false;
           });
