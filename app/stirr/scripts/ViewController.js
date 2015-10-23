@@ -35,6 +35,15 @@ angular
       onTap: _back
     });
 
+    $scope.forkRecipe = function() {
+      var editView = new supersonic.ui.View('stirr#edit');
+      supersonic.ui.layers.push(editView, {
+        params: {
+          baseId: $scope.recipe.id
+        }
+      });
+    };
+
     var _edit = function() {
       var view = new supersonic.ui.View('stirr#edit');
       supersonic.ui.layers.push(view, {
