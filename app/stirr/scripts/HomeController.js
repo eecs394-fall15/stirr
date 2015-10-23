@@ -23,7 +23,7 @@ angular
     var _getRecipes = function() {
       $scope.showSpinner = true;
       _whenDeviceReady(function() {
-        var unsubscribe = Recipe.all().whenChanged(function(recipes) {
+        Recipe.findAll().then(function(recipes) {
           $scope.$apply(function() {
             if ($scope.filtering) {
               $scope.recipes = recipes.filter(function(recipe) {
@@ -34,8 +34,7 @@ angular
             }
             $scope.showSpinner = false;
           });
-          unsubscribe();
-        });
+        }, function(err) {globalError = err;});
       });
     };
 
