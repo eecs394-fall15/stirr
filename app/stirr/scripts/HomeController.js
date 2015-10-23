@@ -23,7 +23,7 @@ angular
     var _getRecipes = function() {
       $scope.showSpinner = true;
       _whenDeviceReady(function() {
-        var unsubscribe = Recipe.all().whenChanged(function(recipes) {
+        Recipe.findAll().then(function(recipes) {
           $scope.$apply(function() {
             if ($scope.filtering) {
               $scope.recipes = recipes.filter(function(recipe) {
@@ -34,7 +34,6 @@ angular
             }
             $scope.showSpinner = false;
           });
-          unsubscribe();
         });
       });
     };
@@ -51,10 +50,11 @@ angular
         var recipe = new Recipe({});
         recipe.uuid = device.uuid;
         recipe.save().then(function() {
-          var view = new supersonic.ui.View('stirr#edit');
-          supersonic.ui.layers.push(view, {
+          var viewView = new supersonic.ui.View('stirr#view');
+          supersonic.ui.layers.push(viewView, {
             params: {
-              id: recipe.id
+              id: recipe.id,
+              bypass: true
             }
           });
         });

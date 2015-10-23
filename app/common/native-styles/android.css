@@ -83,3 +83,7 @@ tab-bar-item#internet {
 #save-button {
   background-image: url(icons/android-checkbox-outline.svg);
 }
+
+#edit-button {
+  background-image: url(icons/edit.svg);
+}

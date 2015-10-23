@@ -1,63 +1,113 @@
-// angular
-//   .module('stirr')
-//   .controller('ViewController', function($scope, supersonic) {
-
-//     $scope.navbarTitle = 'View';
-
-//     $scope.dishes = [
-//       {
-//         name: 'Tomato soup',
-//         icon: '/tomato-soup.jpg',
-//         prepTime: '1 hour',
-//         author: 'Pooja'
-//       },
-//       {
-//         name: 'Ramen',
-//         icon: '/tomato-soup.jpg',
-//         prepTime: '2 hour',
-//         author: 'Adrian'
-//       },
-//       {
-//         name: 'Rice',
-//         icon: '/tomato-soup.jpg',
-//         prepTime: '1.5 hour',
-//         author: 'Benjamin'
-//       }
-//     ];
-
-//   });
-
 angular
   .module('stirr')
   .controller('ViewController', function($scope, Recipe, supersonic) {
+    if (steroids.view.params.bypass) {
+      var editView = new supersonic.ui.View('stirr#edit');
+      supersonic.ui.layers.push(editView, {
+        params: {
+          id: steroids.view.params.id
+        }
+      });
+    }
+
     $scope.recipe = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
+    $scope.name = null;
+    $scope.url = '/food-placeholder.png';
 
-    var _refreshViewData = function() {
-      Recipe.find($scope.dataId).then(function(recipe) {
-        $scope.$apply(function() {
+    var deviceReady = false;
+
+    var _whenDeviceReady = function(callback) {
+      if (deviceReady) {
+        callback();
+      } else {
+        angular.element(document).on('deviceready', callback);
+      }
+    };
+
+    angular.element(document).on('deviceready', function() {
+      deviceReady = true;
+    });
+
+    var _back = function() {
+      supersonic.ui.layers.pop();
+    };
+
+    var _backButton = new supersonic.ui.NavigationBarButton({
+      styleId: 'back-button',
+      onTap: _back
+    });
+
+    var _edit = function() {
+      var view = new supersonic.ui.View('stirr#edit');
+      supersonic.ui.layers.push(view, {
+        params: {
+          id: $scope.recipe.id
+        }
+      });
+    };
+
+    var _editButton = new supersonic.ui.NavigationBarButton({
+      styleId: 'edit-button',
+      onTap: _edit
+    });
+
+    var _getRecipe = function() {
+      Recipe.find(steroids.view.params.id).then(
+      function(recipe) {
+        $scope.$apply(function($scope) {
           $scope.recipe = recipe;
+
+          if ($scope.recipe.image) {
+            $scope.name = $scope.recipe.image.name;
+            $scope.url = $scope.recipe.image.url;
+          }
+
+          // Parse string json into in json object
+          $scope.ingredients =
+              JSON.parse($scope.recipe.ingredients || '[]');
+          $scope.actions = JSON.parse($scope.recipe.actions || '[]');
+          $scope.time = JSON.parse($scope.recipe.time || '{}');
+
+          _updateMenu();
+
           $scope.showSpinner = false;
         });
+        $scope.changed = false;
+      },
+      function(errorMsg) {
+        $scope.showSpinner = false;
+        $scope.errorMsg = errorMsg;
       });
     };
 
-    supersonic.ui.views.current.whenVisible(function() {
-      if ($scope.dataId) {
-        _refreshViewData();
-      }
-    });
-
-    supersonic.ui.views.current.params.onValue(function(values) {
-      $scope.dataId = values.id;
-      _refreshViewData();
-    });
-
-    $scope.remove = function(id) {
-      $scope.showSpinner = true;
-      $scope.recipe.delete().then(function() {
-        supersonic.ui.layers.pop();
+    var _updateMenu = function() {
+      _whenDeviceReady(function() {
+        var _options;
+        var deviceID = device.uuid;
+        if ($scope.recipe.uuid == deviceID) {
+          _options = {
+            title: 'stirr',
+            overrideBackButton: true,
+            buttons: {
+              left: [_backButton],
+              right: [_editButton]
+            }
+          };
+        } else {
+          _options = {
+            title: 'stirr',
+            overrideBackButton: true,
+            buttons: {
+              left: [_backButton]
+            }
+          };
+        }
+        supersonic.ui.navigationBar.update(_options);
       });
     };
+
+    supersonic.ui.views.current.whenVisible(_getRecipe);
+
   });

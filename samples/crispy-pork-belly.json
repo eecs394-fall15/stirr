@@ -1,0 +1,23 @@
+{
+  "name": "Crispy Pork Belly",
+  "author": "Adrien",
+  "description": "A Hong Kong/Vietnamese classic.",
+  "ingredients": [
+    {"name": "Skin-On Pork Belly", "quantity": "1 chunk"},
+    {"name": "White vinegar", "quantity": "As needed"},
+    {"name": "Five spice powder", "quantity": ""},
+    {"name": "Sugar", "quantity": ""}
+  ],
+  "actions": [
+    {"step": "A day ahead baste the pork belly skin with vinegar and salt every few hours and expose to air in the refrigerator."},
+    {"step": "Make shallow incisions on the meat side and rub in the five spice powder and sugar."},
+    {"step": "Cover the sides of the pork belly with aluminum foil and cook in an oven at 300 on the bottom rack until cooked through."},
+    {"step": "Baste the skin with vinegar and salt one more time."},
+    {"step": "Poke holes in the skin with a sharp fork or skewer."},
+    {"step": "Return the pork belly to the oven on the top rack and broil until the skin bubbles and crisps to a golden brown."},
+    {"step": "Let stand for a few minutes. Cut into slices or cubes. Serve."}
+  ],
+  "time": {},
+  "image": "crispy-pork-belly.jpg",
+  "uuid": "147c1cd088644efb"
+}

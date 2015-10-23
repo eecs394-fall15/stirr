@@ -1,7 +1,6 @@
 angular
   .module('stirr')
   .controller('EditController', function($scope, Recipe, supersonic) {
-
     $scope.recipe = null;
     $scope.errorMsg = null;
     $scope.showSpinner = true;
@@ -81,33 +80,33 @@ angular
 
     supersonic.ui.navigationBar.update(_options);
 
-    // supersonic.device.buttons.back.whenPressed(_back);
+    supersonic.device.buttons.back.whenPressed(_back);
 
     // Fetch an object based on id from the database
     Recipe.find(steroids.view.params.id).then(
-        function(recipe) {
-          $scope.$apply(function($scope) {
-            $scope.recipe = recipe;
+      function(recipe) {
+        $scope.$apply(function($scope) {
+          $scope.recipe = recipe;
 
-            if ($scope.recipe.image) {
-              $scope.name = $scope.recipe.image.name;
-              $scope.url = $scope.recipe.image.url;
-            }
+          if ($scope.recipe.image) {
+            $scope.name = $scope.recipe.image.name;
+            $scope.url = $scope.recipe.image.url;
+          }
 
-            // Parse string json into in json object
-            $scope.ingredients =
-                JSON.parse($scope.recipe.ingredients || '[]');
-            $scope.actions = JSON.parse($scope.recipe.actions || '[]');
-            $scope.time = JSON.parse($scope.recipe.time || '{}');
+          // Parse string json into in json object
+          $scope.ingredients =
+              JSON.parse($scope.recipe.ingredients || '[]');
+          $scope.actions = JSON.parse($scope.recipe.actions || '[]');
+          $scope.time = JSON.parse($scope.recipe.time || '{}');
 
-            $scope.showSpinner = false;
-          });
-          $scope.changed = false;
-        },
-        function(errorMsg) {
           $scope.showSpinner = false;
-          $scope.errorMsg = errorMsg;
         });
+        $scope.changed = false;
+      },
+      function(errorMsg) {
+        $scope.showSpinner = false;
+        $scope.errorMsg = errorMsg;
+      });
 
     $scope.addIngredient = function() {
       $scope.ingredients.push({'name': '', 'quantity': ''});

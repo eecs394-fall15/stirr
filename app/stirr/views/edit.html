@@ -22,14 +22,20 @@
       <div class="card stirr-edit-form">
         <div class="item list stirr-list">
           <label class="item item-input">
-            <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Title" style="font-weight: bold">
+            <p class="input-label">Recipe Name:</p>
+            <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Title">
           </label>
+        </div>
+        <div class="item list">
           <label class="item item-input">
-            <span class="input-label stirr-input-by">By</span>
+            <p class="input-label">Author:</p>
             <input type="text" name="author" ng-model="recipe.author" ng-change="change()" placeholder="Author">
           </label>
+        </div>
+        <div class="item list">
           <label class="item item-input">
-            <input type="text" name="description" ng-model="recipe.description" ng-change="change()" placeholder="Description">
+            <p class="input-label">Description:</p>
+            <textarea name="description" ng-model="recipe.description" ng-change="change()" placeholder="Description"></textarea>
           </label>
         </div>
         <div class="item stirr-item-divider">
@@ -50,7 +56,7 @@
         </div>
         <div class="item list stirr-list" ng-repeat="action in actions">
           <label class="item item-input">
-            <span class="input-label">{{ $index + 1 }}.</span>
+            <p class="input-label">Step {{ $index + 1 }}:</p>
             <input type="text" name="step" ng-model="action.step" ng-change="change()" placeholder="Step">
           </label>
         </div>
