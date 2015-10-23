@@ -34,7 +34,7 @@ angular
             }
             $scope.showSpinner = false;
           });
-        }, function(err) {globalError = err;});
+        });
       });
     };
 
