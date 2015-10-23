@@ -58,8 +58,8 @@ angular
       onTap: _edit
     });
 
-    var _getRecipe = function() {
-      Recipe.find(steroids.view.params.id).then(
+    var _getRecipe = function(recipeId) {
+      Recipe.find(recipeId).then(
       function(recipe) {
         $scope.$apply(function($scope) {
           $scope.recipe = recipe;
@@ -87,6 +87,14 @@ angular
       });
     };
 
+    _getRecipe(steroids.view.params.id);
+
+    supersonic.data.channel('editPop').subscribe(function (recipeId) {
+      if (recipeId.length) {
+        _getRecipe(recipeId);
+      }
+    });
+
     var _updateMenu = function() {
       _whenDeviceReady(function() {
         var _options;
@@ -112,11 +120,5 @@ angular
         supersonic.ui.navigationBar.update(_options);
       });
     };
-
-    supersonic.ui.views.current.whenVisible(_getRecipe);
-
-    supersonic.data.channel('editPop').subscribe(function (recipeId) {
-      alert(recipeId);
-    });
 
   });
