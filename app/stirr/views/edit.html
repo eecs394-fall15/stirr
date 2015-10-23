@@ -20,19 +20,15 @@
     </div>
     <form>
       <div class="card stirr-edit-form">
-        <div class="item list stirr-list">
+        <div class="list">
           <label class="item item-input">
-            <p class="input-label">Recipe Name:</p>
+            <p class="input-label">Title:</p>
             <input type="text" name="name" ng-model="recipe.name" ng-change="change()" placeholder="Title">
           </label>
-        </div>
-        <div class="item list">
           <label class="item item-input">
             <p class="input-label">Author:</p>
             <input type="text" name="author" ng-model="recipe.author" ng-change="change()" placeholder="Author">
           </label>
-        </div>
-        <div class="item list">
           <label class="item item-input">
             <p class="input-label">Description:</p>
             <textarea name="description" ng-model="recipe.description" ng-change="change()" placeholder="Description"></textarea>
