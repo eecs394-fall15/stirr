@@ -47,16 +47,11 @@ angular
 
     var _newRecipe = function() {
       _whenDeviceReady(function() {
-        var recipe = new Recipe({});
-        recipe.uuid = device.uuid;
-        recipe.save().then(function() {
-          var viewView = new supersonic.ui.View('stirr#view');
-          supersonic.ui.layers.push(viewView, {
-            params: {
-              id: recipe.id,
-              bypass: true
-            }
-          });
+        var viewView = new supersonic.ui.View('stirr#view');
+        supersonic.ui.layers.push(viewView, {
+          params: {
+            bypass: true
+          }
         });
       });
     };

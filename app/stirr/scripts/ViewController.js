@@ -3,11 +3,7 @@ angular
   .controller('ViewController', function($scope, Recipe, supersonic) {
     if (steroids.view.params.bypass) {
       var editView = new supersonic.ui.View('stirr#edit');
-      supersonic.ui.layers.push(editView, {
-        params: {
-          id: steroids.view.params.id
-        }
-      });
+      supersonic.ui.layers.push(editView);
     }
 
     $scope.recipe = null;
