@@ -3,11 +3,7 @@ angular
   .controller('ViewController', function($scope, Recipe, supersonic) {
     if (steroids.view.params.bypass) {
       var editView = new supersonic.ui.View('stirr#edit');
-      supersonic.ui.layers.push(editView, {
-        params: {
-          id: steroids.view.params.id
-        }
-      });
+      supersonic.ui.layers.push(editView);
     }
 
     $scope.recipe = null;
@@ -39,6 +35,15 @@ angular
       onTap: _back
     });
 
+    $scope.forkRecipe = function() {
+      var editView = new supersonic.ui.View('stirr#edit');
+      supersonic.ui.layers.push(editView, {
+        params: {
+          baseId: $scope.recipe.id
+        }
+      });
+    };
+
     var _edit = function() {
       var view = new supersonic.ui.View('stirr#edit');
       supersonic.ui.layers.push(view, {
@@ -53,8 +58,8 @@ angular
       onTap: _edit
     });
 
-    var _getRecipe = function() {
-      Recipe.find(steroids.view.params.id).then(
+    var _getRecipe = function(recipeId) {
+      Recipe.find(recipeId).then(
       function(recipe) {
         $scope.$apply(function($scope) {
           $scope.recipe = recipe;
@@ -82,6 +87,16 @@ angular
       });
     };
 
+    _getRecipe(steroids.view.params.id);
+
+    supersonic.data.channel('editPop').subscribe(function(data) {
+      supersonic.ui.views.current.whenVisible(_.once(function() {
+        if (data.id) {
+          _getRecipe(data.id);
+        }
+      }));
+    });
+
     var _updateMenu = function() {
       _whenDeviceReady(function() {
         var _options;
@@ -107,7 +122,5 @@ angular
         supersonic.ui.navigationBar.update(_options);
       });
     };
-
-    supersonic.ui.views.current.whenVisible(_getRecipe);
 
   });

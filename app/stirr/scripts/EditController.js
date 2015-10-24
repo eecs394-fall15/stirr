@@ -10,15 +10,47 @@ angular
     $scope.time = null;
     $scope.name = null;
     $scope.url = '/food-placeholder.png';
-    $scope.changed = false;
+
+    var deviceReady = false;
+
+    var _whenDeviceReady = function(callback) {
+      if (deviceReady) {
+        callback();
+      } else {
+        angular.element(document).on('deviceready', callback);
+      }
+    };
+
+    angular.element(document).on('deviceready', function() {
+      deviceReady = true;
+    });
+
+    var _alertError = function(error) {
+      window.alert(error);
+      $scope.$apply(function($scope) {
+        $scope.showSpinner = false;
+      });
+    };
+
+    var changed = false;
 
     var _back = function() {
-      if ($scope.changed) {
-        if (window.confirm('Discard unsaved changes?')) {
+      var backAndPub = function() {
+        if (!$scope.recipe.id && !$scope.recipe.parentId) {
+          supersonic.ui.layers.popAll();
+        } else {
+          supersonic.data.channel('editPop').publish({
+            id: $scope.recipe.id
+          });
           supersonic.ui.layers.pop();
         }
+      };
+      if (changed) {
+        if (window.confirm('Discard unsaved changes?')) {
+          backAndPub();
+        }
       } else {
-        supersonic.ui.layers.pop();
+        backAndPub();
       }
     };
 
@@ -45,17 +77,17 @@ angular
           };
         }
 
+        var prevUndef = $scope.recipe.id === undefined;
         $scope.recipe.save().then(function() {
           $scope.$apply(function($scope) {
             $scope.showSpinner = false;
           });
-          $scope.changed = false;
-        }, function(error) {
-          window.alert(error);
-          $scope.$apply(function($scope) {
-            $scope.showSpinner = false;
-          });
-        });
+
+          if (prevUndef) {
+            Recipe.find($scope.recipe.id).then(_display, _alertError);
+          }
+          changed = false;
+        }, _alertError);
       }
     };
 
@@ -82,31 +114,47 @@ angular
 
     supersonic.device.buttons.back.whenPressed(_back);
 
-    // Fetch an object based on id from the database
-    Recipe.find(steroids.view.params.id).then(
-      function(recipe) {
-        $scope.$apply(function($scope) {
-          $scope.recipe = recipe;
+    var _display = function(recipe) {
+      $scope.$apply(function($scope) {
+        $scope.recipe = recipe;
 
-          if ($scope.recipe.image) {
-            $scope.name = $scope.recipe.image.name;
-            $scope.url = $scope.recipe.image.url;
-          }
+        if ($scope.recipe.image) {
+          $scope.name = $scope.recipe.image.name;
+          $scope.url = $scope.recipe.image.url;
+        }
 
-          // Parse string json into in json object
-          $scope.ingredients =
-              JSON.parse($scope.recipe.ingredients || '[]');
-          $scope.actions = JSON.parse($scope.recipe.actions || '[]');
-          $scope.time = JSON.parse($scope.recipe.time || '{}');
+        // Parse string json into in json object
+        $scope.ingredients = JSON.parse($scope.recipe.ingredients || '[]');
+        $scope.actions = JSON.parse($scope.recipe.actions || '[]');
+        $scope.time = JSON.parse($scope.recipe.time || '{}');
 
-          $scope.showSpinner = false;
-        });
-        $scope.changed = false;
-      },
-      function(errorMsg) {
         $scope.showSpinner = false;
-        $scope.errorMsg = errorMsg;
       });
+    };
+
+    if (steroids.view.params.id) {
+      Recipe.find(steroids.view.params.id).then(_display, _alertError);
+    } else if (steroids.view.params.baseId) {
+      Recipe.find(steroids.view.params.baseId).then(function(recipe) {
+        _whenDeviceReady(function() {
+          _display(new Recipe({
+            description: recipe.description,
+            ingredients: recipe.ingredients,
+            actions: recipe.actions,
+            time: recipe.time,
+            image: recipe.image,
+            uuid: device.uuid,
+            parentId: recipe.parentId || recipe.id
+          }));
+        });
+      }, _alertError);
+    } else {
+      _whenDeviceReady(function() {
+        _display(new Recipe({
+          uuid: device.uuid
+        }));
+      });
+    }
 
     $scope.addIngredient = function() {
       $scope.ingredients.push({'name': '', 'quantity': ''});
@@ -166,6 +214,6 @@ angular
     };
 
     $scope.change = function() {
-      $scope.changed = true;
+      changed = true;
     };
   });
