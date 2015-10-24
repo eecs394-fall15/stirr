@@ -89,10 +89,12 @@ angular
 
     _getRecipe(steroids.view.params.id);
 
-    supersonic.data.channel('editPop').subscribe(function(recipeId) {
-      if (recipeId.length) {
-        _getRecipe(recipeId);
-      }
+    supersonic.data.channel('editPop').subscribe(function(data) {
+      supersonic.ui.views.current.whenVisible(_.once(function() {
+        if (data.id) {
+          _getRecipe(data.id);
+        }
+      }));
     });
 
     var _updateMenu = function() {
