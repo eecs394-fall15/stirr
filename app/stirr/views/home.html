@@ -10,7 +10,7 @@
         <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
         <div class="stirr-overlay">
           <h2>{{ recipe.name }}</h2>
-          <h3>By {{ recipe.author }}</h3>
+          <h3>By {{ recipe.author || 'Anonymous' }}</h3>
         </div>
       </div>
     </super-navigate>
