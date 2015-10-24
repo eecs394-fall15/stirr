@@ -35,12 +35,17 @@ angular
     var changed = false;
 
     var _back = function() {
+      var backAndPub = function() {
+        supersonic.ui.layers.pop();
+        supersonic.data.channel('editPop').publish($scope.recipe.id || '');
+      };
       if (changed) {
         if (window.confirm('Discard unsaved changes?')) {
-          supersonic.ui.layers.pop();
+          backAndPub();
         }
       } else {
         supersonic.ui.layers.pop();
+        backAndPub();
       }
     };
 
