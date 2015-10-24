@@ -89,7 +89,7 @@ angular
 
     _getRecipe(steroids.view.params.id);
 
-    supersonic.data.channel('editPop').subscribe(function (recipeId) {
+    supersonic.data.channel('editPop').subscribe(function(recipeId) {
       if (recipeId.length) {
         _getRecipe(recipeId);
       }
