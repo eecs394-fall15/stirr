@@ -60,27 +60,34 @@ angular
           $scope.showSpinner = true;
         });
 
+        var uploadRecipe = $scope.recipe;
+
         // check for empty ingredients and steps
         $scope.ingredients = checkEmpty($scope.ingredients, 'name');
         $scope.actions = checkEmpty($scope.actions, 'step');
 
         // convert recipe JSON into strings
-        $scope.recipe.ingredients = angular.toJson($scope.ingredients);
-        $scope.recipe.actions = angular.toJson($scope.actions);
-        $scope.recipe.time = angular.toJson($scope.time);
+        uploadRecipe.ingredients = angular.toJson($scope.ingredients);
+        uploadRecipe.actions = angular.toJson($scope.actions);
+        uploadRecipe.time = angular.toJson($scope.time);
 
         if ($scope.name) {
-          $scope.recipe.image = {
+          uploadRecipe.image = {
             __type: 'File',
             name: $scope.name,
             url: $scope.url
           };
         }
 
-        $scope.recipe.save().then(function() {
+        var prevUndef = ((uploadRecipe.id === undefined) ? true : false);
+        uploadRecipe.save().then(function() {
           $scope.$apply(function($scope) {
             $scope.showSpinner = false;
           });
+
+          if (prevUndef) {
+            Recipe.find(uploadRecipe.id).then(_display, _alertError);
+          }
           changed = false;
         }, _alertError);
       }
@@ -119,8 +126,7 @@ angular
         }
 
         // Parse string json into in json object
-        $scope.ingredients =
-            JSON.parse($scope.recipe.ingredients || '[]');
+        $scope.ingredients = JSON.parse($scope.recipe.ingredients || '[]');
         $scope.actions = JSON.parse($scope.recipe.actions || '[]');
         $scope.time = JSON.parse($scope.recipe.time || '{}');
 
