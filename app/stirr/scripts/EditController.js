@@ -36,15 +36,20 @@ angular
 
     var _back = function() {
       var backAndPub = function() {
-        supersonic.ui.layers.pop();
-        supersonic.data.channel('editPop').publish($scope.recipe.id || '');
+        if (!$scope.recipe.id && !$scope.recipe.parentId) {
+          supersonic.ui.layers.popAll();
+        } else {
+          supersonic.data.channel('editPop').publish({
+            id: $scope.recipe.id
+          });
+          supersonic.ui.layers.pop();
+        }
       };
       if (changed) {
         if (window.confirm('Discard unsaved changes?')) {
           backAndPub();
         }
       } else {
-        supersonic.ui.layers.pop();
         backAndPub();
       }
     };
