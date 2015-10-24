@@ -263,10 +263,19 @@ angular
           }
         }
       } else {
-        if (!$scope.recipe.id && !$scope.recipe.parentId) {
-          supersonic.ui.layers.popAll();
+        var pop = function() {
+          if (!$scope.recipe.id && !$scope.recipe.parentId) {
+            supersonic.ui.layers.popAll();
+          } else {
+            supersonic.ui.layers.pop();
+          }
+        };
+        if (changed) {
+          if (window.confirm('Are you sure?')) {
+            pop();
+          }
         } else {
-          supersonic.ui.layers.pop();
+          pop();
         }
       }
     };
