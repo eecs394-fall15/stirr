@@ -121,6 +121,17 @@ label p, label textarea {
   margin: 0;
 }
 
+.searchbar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+}
+
+.recipe-list {
+  margin-top: 47px;
+}
+
 .stirr-fake-tabs {
   position: fixed;
   bottom: 0;
