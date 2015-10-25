@@ -8,11 +8,11 @@
     <div class="list searchbar">
       <label class="item item-input">
         <i class="icon super-search placeholder-icon"></i>
-        <input type="text" placeholder="Search" ng-model="searchText">
+        <input type="text" placeholder="Search" ng-model="searchText" ng-model-options="{debounce: 500}">
       </label>
     </div>
     <div class="recipe-list">
-      <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes | filter:searchText">
+      <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in filteredRecipes = (recipes | filter:searchText)">
         <div class="stirr-banner">
           <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
           <div class="stirr-overlay">
@@ -22,7 +22,7 @@
         </div>
       </super-navigate>
     </div>
-    <h4 ng-show="recipes.length == 0" class="assertive padding">
+    <h4 ng-show="filteredRecipes.length == 0" class="assertive padding-10">
       No recipes found. Create one?
     </h4>
     <div class="stirr-spacer"></div>
