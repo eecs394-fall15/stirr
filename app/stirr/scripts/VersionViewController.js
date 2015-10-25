@@ -26,7 +26,7 @@ angular
         Recipe.findAll().then(function(recipes) {
           $scope.$apply(function() {
             $scope.recipes = recipes.filter(function(recipe) {
-              return recipe.parentId === steroids.view.parentId;
+              return recipe.parentId === steroids.view.params.parentId;
             });
             $scope.showSpinner = false;
           });
@@ -36,21 +36,20 @@ angular
 
     supersonic.ui.views.current.whenVisible(_getRecipes);
 
-    $scope.filter = function(enabled) {
-      $scope.filtering = enabled;
-      _getRecipes();
+    var _back = function() {
+      supersonic.ui.modal.hide();
     };
 
-    // var addBtn = new supersonic.ui.NavigationBarButton({
-    //   styleId: 'home-nav-add',
-    //   onTap: _newRecipe
-    // });
+    var _backButton = new supersonic.ui.NavigationBarButton({
+      styleId: 'back-button',
+      onTap: _back
+    });
 
-    // supersonic.ui.navigationBar.update({
-    //   title: 'stirr',
-    //   overrideBackButton: false,
-    //   buttons: {
-    //     right: [addBtn]
-    //   }
-    // }).then(supersonic.ui.navigationBar.show());
-  // });
+    supersonic.ui.navigationBar.update({
+      title: 'stirr',
+      overrideBackButton: false,
+      buttons: {
+        left: [_backButton]
+      }
+    }).then(supersonic.ui.navigationBar.show());
+  });
