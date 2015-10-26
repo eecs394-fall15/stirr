@@ -30,9 +30,11 @@ angular
 
     supersonic.ui.navigationBar.update({
       title: 'stirr',
-      overrideBackButton: false,
+      overrideBackButton: true,
       buttons: {
         left: [_backButton]
       }
-    }).then(supersonic.ui.navigationBar.show());
+    }).then(function() {
+      supersonic.ui.navigationBar.show();
+    });
   });
