@@ -1,11 +1,6 @@
 angular
   .module('stirr')
   .controller('ViewController', function($scope, Recipe, supersonic) {
-    if (steroids.view.params.bypass) {
-      var editView = new supersonic.ui.View('stirr#edit');
-      supersonic.ui.layers.push(editView);
-    }
-
     $scope.recipe = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
@@ -87,8 +82,6 @@ angular
       });
     };
 
-    _getRecipe(steroids.view.params.id);
-
     supersonic.data.channel('editPop').subscribe(function(data) {
       supersonic.ui.views.current.whenVisible(_.once(function() {
         if (data.id) {
@@ -123,4 +116,19 @@ angular
       });
     };
 
+    supersonic.ui.views.current.params.onValue(function(params) {
+      if (params.bypass) {
+        var pushEdit = function() {
+          var editView = new supersonic.ui.View('stirr#edit');
+          supersonic.ui.layers.push(editView);
+        };
+        var handlerId = steroids.layers.on('didchange', function() {
+          steroids.layers.off('didchange', handlerId);
+          pushEdit();
+        });
+        angular.element(document).ready(pushEdit);
+      } else {
+        _getRecipe(params.id);
+      }
+    });
   });
