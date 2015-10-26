@@ -167,13 +167,22 @@ label p, label textarea {
   margin: 0;
 }
 
-.stirr-item-divider {
-  text-align: center;
-  font-weight: bold;
-  background-color: #00B5FF;
-  color: white;
-}
-
 .stirr-input-by {
   width: 2.0em;
+}
+
+.stirr-input-item {
+  padding: 12px 16px 4px 16px;
+}
+
+.stirr-input-item input {
+  padding: 0;
+  width: 100%;
+}
+
+.stirr-input-item .stirr-input-header {
+  color: #387ef5;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin: 0;
 }
