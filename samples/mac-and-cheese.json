@@ -1,0 +1,23 @@
+{
+  "name": "Mac and Cheese",
+  "author": "Pooja",
+  "description": "Creamy, homemade mac and cheese.",
+  "ingredients": [
+    {"name": "Uncooked elbow macaroni", "quantity": "8 oz"},
+    {"name": "Shredded sharp cheddar cheese", "quantity": "2 cups"},
+    {"name": "Grated parmesan cheese", "quantity": "1/2 cup"},
+    {"name": "Milk", "quantity": "3 cups"},
+    {"name": "Butter", "quantity": "1/4 cup"},
+    {"name": "All-purpose flour", "quantity": "2 1/2 tbsps"}
+  ],
+  "actions": [
+    {"step": "Cook macaroni until tender."},
+    {"step": "In a saucepan, melt butter or margarine over medium heat. Stir in flour."},
+    {"step": "Add milk slowly."},
+    {"step": "Stir in cheeses, and cook over low heat until cheese is melted and the sauce is thick."},
+    {"step": "Pour sauce over macaroni and serve while hot."}
+  ],
+  "time": {},
+  "image": "mac-and-cheese.jpg",
+  "uuid": "5e26425eda8cc3f"
+}
