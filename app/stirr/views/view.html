@@ -3,8 +3,8 @@
     <div class="stirr-banner">
       <img ng-src="{{ url }}">
       <div class="stirr-overlay">
-        <h2>{{ recipe.name }}</h2>
-        <h3>By {{ recipe.author }}</h3>
+        <h2>{{ recipe.name || 'Untitled' }}</h2>
+        <h3>By {{ recipe.author || 'Anonymous' }}</h3>
       </div>
     </div>
     <div class="card">
@@ -39,5 +39,8 @@
         </label>
       </div>
     </div>
+    <button class="button button-full button-positive" ng-click="forkRecipe()">
+      Create a copy
+    </button>
   </div>
 </div>
