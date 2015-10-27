@@ -187,25 +187,34 @@ label p, label textarea {
   margin: 0;
 }
 
-.stirr-ingredient button.stirr-ingredient-btn {
-  position: relative;
+.stirr-ingredient button.stirr-ingredient-btn,
+.stirr-action button.stirr-action-btn {
   font-size: 0.75em;
   color: white;
   padding: 0;
-  margin-right: 5px;
   width: 25px;
   height: 25px;
-  border: none !important;
   border-radius: 50%;
   background-color: #387ef5;
-  float: right;
   text-align: center;
+  border: none !important;
+}
+
+.stirr-ingredient button.stirr-ingredient-btn {
+  margin-right: 5px;
+  float: right;
+  position: relative;
   top: 5px;
 }
 
 .stirr-ingredient {
+  display: block;
   line-height: 30px;
-  vertical-align: center;
+}
+
+.stirr-ingredient {
+  vertical-align: middle;
+  clear: both;
 }
 
 .stirr-ingredient input {
@@ -219,7 +228,7 @@ label p, label textarea {
 
 .stirr-ingredient input.stirr-ingredient-quantity {
   display: none;
-  color: #666;
+  font-size: 0.8em;
 }
 
 .stirr-ingredient.stirr-expanded input.stirr-ingredient-quantity {
@@ -228,6 +237,34 @@ label p, label textarea {
 
 .stirr-less-right-pad {
   padding-right: 11px;
+}
+
+.stirr-action {
+  padding-top: 5px;
+}
+
+.stirr-edit-form .stirr-action hr {
+  margin-top: 10px;
+}
+
+.stirr-action textarea {
+  display: inline-block;
+  width: 90%;
+  height: 49px;
+  padding-left: 5px;
+  vertical-align: top;
+}
+
+.stirr-action .stirr-action-header {
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+}
+
+.stirr-action .stirr-action-header .stirr-action-number {
+  color: #387ef5;
+  font-weight: bold;
+  margin: 2px;
 }
 
 .stirr-edit-form hr {
