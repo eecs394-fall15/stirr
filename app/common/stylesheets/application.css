@@ -92,6 +92,10 @@ label p, label textarea {
   line-height: 20px;
 }
 
+a.item-thumbnail-left p {
+  white-space: normal;
+}
+
 .ingredient {
   width: 50%;
 }

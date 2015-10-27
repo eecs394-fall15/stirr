@@ -1,0 +1,13 @@
+<div class="padding" ng-controller="VersionViewController">
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+    <div class="list">
+      <a class="item item-thumbnail-left" href="#">
+        <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
+        <h2>{{ recipe.name || 'Untitled'}}</h2>
+        <h4>By {{ recipe.author || 'Anonymous'}}</h4>
+        <p>{{ recipe.description || 'No Description'}}</p>
+      </a>
+    </div>
+  </super-navigate>
+</div>

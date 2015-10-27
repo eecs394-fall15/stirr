@@ -1,0 +1,26 @@
+{
+  "name": "Banana bread",
+  "author": "Pooja",
+  "description": "Classic banana bread, perfect for using up old bananas.",
+  "ingredients": [
+    {"name": "All purpose flour", "quantity": "2 cups"},
+    {"name": "Brown sugar", "quantity": "3/4 cup"},
+    {"name": "Eggs, beaten", "quantity": "2"},
+    {"name": "Large, overripe bananas", "quantity": "3-5"},
+    {"name": "Vanilla extract", "quantity": "1 tsp"},
+    {"name": "Salt", "quantity": "1/4 tsp"},
+    {"name": "Butter", "quantity": "1/3 - 1/2 cup"},
+    {"name": "Baking soda", "quantity": "1 tsp"}
+  ],
+  "actions": [
+    {"step": "Preheat oven to 350 degrees. Lightly grease 9x5 inch pan"},
+    {"step": "Combine flour, baking soda, and salt in a bowl."},
+    {"step": "Combine butter and brown sugar in a separate bowl."},
+    {"step": "Add mashed bananas and eggs to brown sugar mixture. Stir until well blended."},
+    {"step": "Add banana mixture to flour mixture. Stir to moisten. DO NOT OVERMIX."},
+    {"step": "Pour batter into pan. Bake for 60 - 65 minutes."}
+  ],
+  "time": {},
+  "image": "banana-bread.jpg",
+  "uuid": "5e26425eda8cc3f"
+}

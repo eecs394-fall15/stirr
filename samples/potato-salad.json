@@ -1,0 +1,23 @@
+{
+  "name": "Potato Salad",
+  "author": "Pooja",
+  "description": "Classic potato salad.",
+  "ingredients": [
+    {"name": "Peeled, cut potatoes", "quantity": "5-6 medium"},
+    {"name": "Mayonnaise", "quantity": "1 cup"},
+    {"name": "Vinegar", "quantity": "2 tbsps"},
+    {"name": "Salt", "quantity": "1 1/2 tsps"},
+    {"name": "Thinly sliced celery", "quantity": "1 cup"},
+    {"name": "Chopped onion", "quantity": "1/2 cup"},
+    {"name": "Black pepper", "quantity": "To taste"}
+  ],
+  "actions": [
+    {"step": "Boil water and add potatoes."},
+    {"step": "Simmer until potatoes are tender."},
+    {"step": "Drain and let potatoes cool."},
+    {"step": "Combine all other ingredients and serve chilled."}
+  ],
+  "time": {},
+  "image": "potato-salad.jpg",
+  "uuid": "5e26425eda8cc3f"
+}

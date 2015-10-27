@@ -60,33 +60,31 @@ angular
           $scope.showSpinner = true;
         });
 
-        var uploadRecipe = $scope.recipe;
-
         // check for empty ingredients and steps
         $scope.ingredients = checkEmpty($scope.ingredients, 'name');
         $scope.actions = checkEmpty($scope.actions, 'step');
 
         // convert recipe JSON into strings
-        uploadRecipe.ingredients = angular.toJson($scope.ingredients);
-        uploadRecipe.actions = angular.toJson($scope.actions);
-        uploadRecipe.time = angular.toJson($scope.time);
+        $scope.recipe.ingredients = angular.toJson($scope.ingredients);
+        $scope.recipe.actions = angular.toJson($scope.actions);
+        $scope.recipe.time = angular.toJson($scope.time);
 
         if ($scope.name) {
-          uploadRecipe.image = {
+          $scope.recipe.image = {
             __type: 'File',
             name: $scope.name,
             url: $scope.url
           };
         }
 
-        var prevUndef = ((uploadRecipe.id === undefined) ? true : false);
-        uploadRecipe.save().then(function() {
+        var prevUndef = $scope.recipe.id === undefined;
+        $scope.recipe.save().then(function() {
           $scope.$apply(function($scope) {
             $scope.showSpinner = false;
           });
 
           if (prevUndef) {
-            Recipe.find(uploadRecipe.id).then(_display, _alertError);
+            Recipe.find($scope.recipe.id).then(_display, _alertError);
           }
           changed = false;
         }, _alertError);
@@ -217,5 +215,68 @@ angular
 
     $scope.change = function() {
       changed = true;
+    };
+
+    /**
+     * if recipe already exists
+     *   confirm
+     *   if parent recipe
+     *     if children exist
+     *       disassociate author and uuid
+     *       return to home
+     *     else
+     *       delete recipe
+     *       return to home
+     *   else
+     *     delete recipe
+     *     return to home
+     * else
+     *   if new recipe
+     *     return to home
+     *   else
+     *     return to base recipe view
+     */
+    $scope.delete = function() {
+      if ($scope.recipe.id) {
+        if (window.confirm('Are you sure?')) {
+          if ($scope.recipe.parentId) {
+            $scope.recipe.delete().then(function() {
+              supersonic.ui.layers.popAll();
+            });
+          } else {
+            Recipe.findAll().then(function(recipes) {
+              recipes = recipes.filter(function(recipe) {
+                return recipe.parentId === $scope.recipe.id;
+              });
+              if (recipes.length) {
+                $scope.recipe.author = null;
+                $scope.recipe.uuid = null;
+                $scope.recipe.save().then(function() {
+                  supersonic.ui.layers.popAll();
+                });
+              } else {
+                $scope.recipe.delete().then(function() {
+                  supersonic.ui.layers.popAll();
+                });
+              }
+            });
+          }
+        }
+      } else {
+        var pop = function() {
+          if (!$scope.recipe.id && !$scope.recipe.parentId) {
+            supersonic.ui.layers.popAll();
+          } else {
+            supersonic.ui.layers.pop();
+          }
+        };
+        if (changed) {
+          if (window.confirm('Are you sure?')) {
+            pop();
+          }
+        } else {
+          pop();
+        }
+      }
     };
   });
