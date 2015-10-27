@@ -33,17 +33,17 @@
           <div class="item stirr-input-item stirr-less-right-pad">
             <p class="stirr-input-header">Ingredients</p>
             <div ng-repeat="ingredient in ingredients" class="stirr-ingredient" ng-class="{'stirr-expanded': ingredient.quantity !== undefined}">
-              <button class="super-chevron-up icon stirr-ingredient-btn" ng-click=""></button>
+              <button class="super-chevron-up icon stirr-ingredient-btn" ng-click="ingredientUp($index)"></button>
               <button class="super-pound icon stirr-ingredient-btn" ng-click="ingredient.quantity = ingredient.quantity !== undefined ? undefined : ''"></button>
-              <input class="stirr-ingredient-name" type="text" ng-model="ingredient.name" ng-change="change()" placeholder="Ingredient">
-              <input class="stirr-ingredient-quantity" type="text" ng-model="ingredient.quantity" ng-change="change()" placeholder="Quantity">
+              <input class="stirr-ingredient-name" type="text" ng-model="ingredient.name" ng-change="change()" placeholder="Ingredient" ng-attr-id="{{'ingredient-' + $index.toString() }}" ng-keypress="ingredientEnter($event, 'ingredient', $index)">
+              <input class="stirr-ingredient-quantity" type="text" ng-model="ingredient.quantity" ng-change="change()" placeholder="Quantity" ng-attr-id="{{ 'quantity-' + $index.toString() }}" ng-keypress="ingredientEnter($event, 'quantity', $index)">
               <hr>
             </div>
             <div class="stirr-ingredient" ng-class="{'stirr-expanded': newIngredient.quantity !== undefined}">
               <button class="super-chevron-up icon stirr-ingredient-btn" ng-click=""></button>
               <button class="super-pound icon stirr-ingredient-btn" ng-click="newIngredient.quantity = newIngredient.quantity !== undefined ? undefined : ''"></button>
-              <input class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change()" placeholder="Ingredient">
-              <input class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change()" placeholder="Quantity">
+              <input id="ingredient-new" class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change();addIngredient('ingredient')" ng-model-options="{debounce: 1000}" placeholder="Ingredient" ng-keypress="ingredientEnter($event, 'ingredient')">
+              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce:1000}" placeholder="Quantity" ng-keypress="ingredientEnter($event, 'quantity')">
             </div>
           </div>
           <div class="item stirr-input-item">

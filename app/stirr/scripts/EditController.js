@@ -10,7 +10,7 @@ angular
     $scope.time = null;
     $scope.name = null;
     $scope.url = '/food-placeholder.png';
-    $scope.newIngredient = {'name': ''};
+    $scope.newIngredient = {name: ''};
 
     var deviceReady = false;
 
@@ -256,6 +256,47 @@ angular
         }
       }
     };
+
+    var _focusIngredient = function(field, index) {
+      var element = document.getElementById(field + '-' + index.toString());
+      element.focus();
+    };
+
+    var addIngredientBlocked = false;
+
+    $scope.addIngredient = function(field, index) {
+      console.log(index);
+      if (!addIngredientBlocked &&
+          ($scope.newIngredient.name || $scope.newIngredient.quantity)) {
+        console.log('here');
+        $scope.ingredients.push($scope.newIngredient);
+        $scope.newIngredient = {name: ''};
+        _.defer(_.partial(
+            _focusIngredient, field, index || $scope.ingredients.length - 1));
+      }
+    };
+
+    $scope.ingredientEnter = function(event, field, index) {
+      if (event.which === 13) {
+        if (index === undefined) {
+          $scope.addIngredient(field, 'new');
+          addIngredientBlocked = true;
+          _.delay(function() {addIngredientBlocked = false;}, 1000);
+        } else if (index + 1 === $scope.ingredients.length) {
+          _focusIngredient(field, 'new');
+        } else {
+          _focusIngredient(field, index + 1);
+        }
+      }
+    };
+
+    $scope.ingredientUp = function(index) {
+      if (index > 0) {
+        var temp = $scope.ingredients[index];
+        $scope.ingredients[index] = $scope.ingredients[index - 1];
+        $scope.ingredients[index - 1] = temp;
+      }
+    }
 
     supersonic.ui.views.current.params.onValue(function(params) {
       if (params.id) {
