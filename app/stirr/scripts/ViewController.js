@@ -129,13 +129,15 @@ angular
 
     supersonic.ui.views.current.params.onValue(function(params) {
       if (params.bypass) {
-        var pushEdit = function() {
+        var pushEdit = _.once(function() {
           var editView = new supersonic.ui.View('stirr#edit');
           supersonic.ui.layers.push(editView);
-        };
-        supersonic.device.platform().then(function(platform) {
-          angular.element(document).ready(pushEdit);
         });
+        var handlerId = steroids.layers.on('didchange', function() {
+          steroids.layers.off('didchange', handlerId);
+          pushEdit();
+        });
+        angular.element(document).ready(pushEdit);
       } else {
         _getRecipe(params.id);
       }
