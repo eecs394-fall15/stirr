@@ -1,0 +1,27 @@
+{
+  "name": "Panang Fish Curry",
+  "author": "Adrien",
+  "description": "A fragrant, milder Thai curry.",
+  "ingredients": [
+    {"name": "White fish meat, cut/torn into chunks"},
+    {"name": "Garlic cloves, crushed"},
+    {"name": "Canned panang curry paste"},
+    {"name": "Thai coconut milk"},
+    {"name": "Fish sauce"},
+    {"name": "Basil leaves (preferably Thai holy basil)"},
+    {"name": "Fresh red chili pepper"}
+  ],
+  "actions": [
+    {"step": "Sear the fish with oil and salt on high heat until light brown. Reserve."},
+    {"step": "Stir fry garlic in a wok with oil until fragrant."},
+    {"step": "Add the panang curry paste. Move around pan to keep from burning."},
+    {"step": "When very fragrant, add the coconut milk."},
+    {"step": "When the coconut milk comes to a boil, turn the heat to low and simmer, stirring every few minutes."},
+    {"step": "When the flavors have developed, add fish sauce to taste."},
+    {"step": "Stir in the basil and fresh red chili pepper a few minutes prior to serving."},
+    {"step": "Serve with jasmine rice."},
+  ],
+  "time": {},
+  "image": "panang-fish-curry.jpg",
+  "uuid": "147c1cd088644efb"
+}
