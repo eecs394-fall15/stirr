@@ -274,3 +274,7 @@ label p, label textarea {
   border-left: none;
   border-right: none;
 }
+
+.stirr-delete-btn {
+  margin: 0 !important;
+}
