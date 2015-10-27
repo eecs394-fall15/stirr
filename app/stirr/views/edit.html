@@ -42,8 +42,8 @@
             <div class="stirr-ingredient" ng-class="{'stirr-expanded': newIngredient.quantity !== undefined}">
               <button class="super-chevron-up icon stirr-ingredient-btn" ng-click=""></button>
               <button class="super-pound icon stirr-ingredient-btn" ng-click="newIngredient.quantity = newIngredient.quantity !== undefined ? undefined : ''"></button>
-              <input id="ingredient-new" class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change();addIngredient('ingredient')" ng-model-options="{debounce: 500}" placeholder="Ingredient" ng-keypress="ingredientEnter($event, 'ingredient')">
-              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce: 500}" placeholder="Quantity" ng-keypress="ingredientEnter($event, 'quantity')">
+              <input id="ingredient-new" class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change();addIngredient('ingredient')" ng-model-options="{debounce: 500}" placeholder="Ingredient">
+              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce: 500}" placeholder="Quantity">
             </div>
           </div>
           <div class="item stirr-input-item">
@@ -53,7 +53,7 @@
                 <p class="stirr-action-number">{{ $index + 1 }}.</p>
                 <div><button class="super-chevron-up icon stirr-action-btn" ng-click="actionUp($index)"></button></div>
               </div>
-              <textarea ng-attr-id="action-{{ $index }}" elastic ng-model="action.step" ng-change="change()" placeholder="Step Description"></textarea>
+              <textarea ng-attr-id="action-{{ $index }}" elastic ng-model="action.step" ng-change="change()" placeholder="Description" ng-keypress="actionEnter($event, $index)"></textarea>
               <hr>
             </div>
             <div class="stirr-action">
@@ -61,7 +61,7 @@
                 <p class="stirr-action-number">{{ actions.length + 1 }}.</p>
                 <div><button class="super-chevron-up icon stirr-action-btn" ng-click=""></button></div>
               </div>
-              <textarea elastic ng-model="newAction.step" ng-change="change()" placeholder="Step Description"></textarea>
+              <textarea id="action-new" elastic ng-model="newAction.step" ng-change="change();addAction()" ng-model-options="{debounce: 500}" placeholder="Step Description"></textarea>
             </div>
           </div>
         </div>
