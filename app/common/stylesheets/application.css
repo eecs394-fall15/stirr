@@ -8,6 +8,10 @@
   padding: 0px;
 }
 
+.padding-10 {
+  padding: 10px!important;
+}
+
 .list {
   margin-bottom: 0px;
 }
@@ -123,6 +127,12 @@ a.item-thumbnail-left p {
 #new-recipe-button {
   padding: 0;
   margin: 0;
+}
+
+.searchbar {
+  width: 100%;
+  z-index: 10;
+  top: 0;
 }
 
 .stirr-fake-tabs {
