@@ -268,6 +268,9 @@ angular
       if (event.which === 13) {
         var targetField = field === 'ingredient' ? 'quantity' : 'ingredient';
         var targetIndex = field === 'ingredient' ? index : index + 1;
+        if (targetIndex === 'new1') {
+          return;
+        }
         if (targetIndex === $scope.ingredients.length) {
           _focusIngredient(targetField, 'new');
         } else {
@@ -290,9 +293,12 @@ angular
       }
     };
 
-    $scope.actionEnter = function(e, index) {
+    $scope.actionEnter = function(event, index) {
       if (event.which === 13) {
         event.preventDefault();
+        if (index === 'new') {
+          return;
+        }
         if (index + 1 === $scope.actions.length) {
           _focusAction('new');
         } else {

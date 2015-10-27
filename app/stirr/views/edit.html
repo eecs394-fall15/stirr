@@ -39,7 +39,7 @@
             </div>
             <div class="stirr-ingredient" ng-class="{'stirr-expanded': newIngredient.quantity !== undefined}">
               <input id="ingredient-new" class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change();addIngredient('ingredient')" ng-model-options="{debounce: 500}" placeholder="Ingredient" ng-keypress="ingredientEnter($event, 'ingredient', 'new')">
-              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce: 500}" placeholder="Quantity">
+              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce: 500}" placeholder="Quantity" ng-keypress="ingredientEnter($event, 'quantity', 'new')">
             </div>
           </div>
           <div class="item stirr-input-item">
@@ -55,7 +55,7 @@
               <div class="stirr-action-header">
                 <p class="stirr-action-number">{{ actions.length + 1 }}.</p>
               </div>
-              <textarea id="action-new" elastic ng-model="newAction.step" ng-change="change();addAction()" ng-model-options="{debounce: 500}" placeholder="Step Description"></textarea>
+              <textarea id="action-new" elastic ng-model="newAction.step" ng-change="change();addAction()" ng-model-options="{debounce: 500}" placeholder="Step Description" ng-keypress="actionEnter($event, 'new')"></textarea>
             </div>
           </div>
         </div>
