@@ -251,9 +251,6 @@ angular
     };
 
     var _focusIngredient = function(field, index) {
-      var ingredient = index === 'new' ? $scope.newIngredient :
-          $scope.ingredients[index];
-      field = ingredient.quantity === undefined ? 'ingredient' : field;
       var element = document.getElementById(field + '-' + index.toString());
       element.focus();
     };
@@ -269,24 +266,17 @@ angular
 
     $scope.ingredientEnter = function(event, field, index) {
       if (event.which === 13) {
-        if (index + 1 === $scope.ingredients.length) {
-          _focusIngredient(field, 'new');
+        var targetField = field === 'ingredient' ? 'quantity' : 'ingredient';
+        var targetIndex = field === 'ingredient' ? index : index + 1;
+        if (targetIndex === $scope.ingredients.length) {
+          _focusIngredient(targetField, 'new');
         } else {
-          _focusIngredient(field, index + 1);
+          _focusIngredient(targetField, targetIndex);
         }
       }
     };
 
-    $scope.ingredientUp = function(index) {
-      if (index > 0) {
-        var temp = $scope.ingredients[index];
-        $scope.ingredients[index] = $scope.ingredients[index - 1];
-        $scope.ingredients[index - 1] = temp;
-      }
-    }
-
     var _focusAction = function(index) {
-      var action = index === 'new' ? $scope.newAction : $scope.actions[index];
       var element = document.getElementById('action-' + index.toString());
       element.focus();
     };
@@ -310,14 +300,6 @@ angular
         }
       }
     };
-
-    $scope.actionUp = function(index) {
-      if (index > 0) {
-        var temp = $scope.actions[index];
-        $scope.actions[index] = $scope.actions[index - 1];
-        $scope.actions[index - 1] = temp;
-      }
-    }
 
     supersonic.ui.views.current.params.onValue(function(params) {
       if (params.id) {

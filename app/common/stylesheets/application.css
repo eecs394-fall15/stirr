@@ -201,56 +201,12 @@ a.item-thumbnail-left p {
   margin: 0;
 }
 
-.stirr-ingredient button.stirr-ingredient-btn,
-.stirr-action button.stirr-action-btn {
-  font-size: 0.75em;
-  color: white;
-  padding: 0;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #387ef5;
-  text-align: center;
-  border: none !important;
-}
-
-.stirr-ingredient button.stirr-ingredient-btn {
-  margin-right: 5px;
-  float: right;
-  position: relative;
-  top: 5px;
-}
-
-.stirr-ingredient {
-  display: block;
-  line-height: 30px;
-}
-
-.stirr-ingredient {
-  vertical-align: middle;
-  clear: both;
-}
-
 .stirr-ingredient input {
-  display: inline-block;
-  height: 30px;
-}
-
-.stirr-ingredient input.stirr-ingredient-name {
-  padding-right: 60px;
+  display: block;
 }
 
 .stirr-ingredient input.stirr-ingredient-quantity {
-  display: none;
   font-size: 0.8em;
-}
-
-.stirr-ingredient.stirr-expanded input.stirr-ingredient-quantity {
-  display: block;
-}
-
-.stirr-less-right-pad {
-  padding-right: 11px;
 }
 
 .stirr-action {
@@ -264,7 +220,6 @@ a.item-thumbnail-left p {
 .stirr-action textarea {
   display: inline-block;
   width: 90%;
-  height: 49px;
   padding-left: 5px;
   vertical-align: top;
 }

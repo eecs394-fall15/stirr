@@ -30,20 +30,16 @@
             <p class="stirr-input-header">Description</p>
             <input type="text" ng-model="recipe.description" ng-change="change()" placeholder="Description">
           </div>
-          <div class="item stirr-input-item stirr-less-right-pad">
+          <div class="item stirr-input-item">
             <p class="stirr-input-header">Ingredients</p>
             <div ng-repeat="ingredient in ingredients" class="stirr-ingredient" ng-class="{'stirr-expanded': ingredient.quantity !== undefined}">
-              <button class="super-chevron-up icon stirr-ingredient-btn" ng-click="ingredientUp($index)"></button>
-              <button class="super-pound icon stirr-ingredient-btn" ng-click="ingredient.quantity = ingredient.quantity !== undefined ? undefined : ''"></button>
               <input class="stirr-ingredient-name" type="text" ng-model="ingredient.name" ng-change="change()" placeholder="Ingredient" ng-attr-id="ingredient-{{ $index }}" ng-keypress="ingredientEnter($event, 'ingredient', $index)">
               <input class="stirr-ingredient-quantity" type="text" ng-model="ingredient.quantity" ng-change="change()" placeholder="Quantity" ng-attr-id="quantity-{{ $index }}" ng-keypress="ingredientEnter($event, 'quantity', $index)">
               <hr>
             </div>
             <div class="stirr-ingredient" ng-class="{'stirr-expanded': newIngredient.quantity !== undefined}">
-              <button class="super-chevron-up icon stirr-ingredient-btn" ng-click=""></button>
-              <button class="super-pound icon stirr-ingredient-btn" ng-click="newIngredient.quantity = newIngredient.quantity !== undefined ? undefined : ''"></button>
-              <input id="ingredient-new" class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change();addIngredient('ingredient')" ng-model-options="{debounce: 500}" placeholder="Ingredient">
-              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce: 500}" placeholder="Quantity">
+              <input id="ingredient-new" class="stirr-ingredient-name" type="text" ng-model="newIngredient.name" ng-change="change();addIngredient('ingredient')" ng-model-options="{debounce: 500}" placeholder="Ingredient" ng-keypress="ingredientEnter($event, 'ingredient', 'new')">
+              <input id="quantity-new" class="stirr-ingredient-quantity" type="text" ng-model="newIngredient.quantity" ng-change="change();addIngredient('quantity')" ng-model-options="{debounce: 500}" placeholder="Quantity" ng-keypress="ingredientEnter($event, 'quantity', 'new'>
             </div>
           </div>
           <div class="item stirr-input-item">
@@ -51,7 +47,6 @@
             <div ng-repeat="action in actions" class="stirr-action">
               <div class="stirr-action-header">
                 <p class="stirr-action-number">{{ $index + 1 }}.</p>
-                <div><button class="super-chevron-up icon stirr-action-btn" ng-click="actionUp($index)"></button></div>
               </div>
               <textarea ng-attr-id="action-{{ $index }}" elastic ng-model="action.step" ng-change="change()" placeholder="Description" ng-keypress="actionEnter($event, $index)"></textarea>
               <hr>
@@ -59,7 +54,6 @@
             <div class="stirr-action">
               <div class="stirr-action-header">
                 <p class="stirr-action-number">{{ actions.length + 1 }}.</p>
-                <div><button class="super-chevron-up icon stirr-action-btn" ng-click=""></button></div>
               </div>
               <textarea id="action-new" elastic ng-model="newAction.step" ng-change="change();addAction()" ng-model-options="{debounce: 500}" placeholder="Step Description"></textarea>
             </div>
