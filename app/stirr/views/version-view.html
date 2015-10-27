@@ -1,6 +1,6 @@
 <div class="padding" ng-controller="VersionViewController">
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-  <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes">
+  <super-navigate location="stirr#view" data-params-id="{{ recipe.id }}" ng-repeat="recipe in recipes" ng-if="recipes.length != 0">
     <div class="list">
       <a class="item item-thumbnail-left" href="#">
         <img ng-src="{{ recipe.image.url || '/food-placeholder.png' }}">
@@ -10,4 +10,7 @@
       </a>
     </div>
   </super-navigate>
+  <h4 ng-show="recipes.length == 0" class="assertive padding">
+    No versions based on recipe.
+  </h4>
 </div>
