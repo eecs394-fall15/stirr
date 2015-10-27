@@ -258,31 +258,29 @@ angular
     };
 
     var _focusIngredient = function(field, index) {
+      console.log('_focusIngredient: field = ' + field + '; index = ' + index);
+      var ingredient = index === 'new' ? $scope.newIngredient :
+          $scope.ingredients[index];
+      field = ingredient.quantity === undefined ? 'ingredient' : field;
       var element = document.getElementById(field + '-' + index.toString());
+      console.log(element);
       element.focus();
     };
 
-    var addIngredientBlocked = false;
-
-    $scope.addIngredient = function(field, index) {
-      console.log(index);
-      if (!addIngredientBlocked &&
-          ($scope.newIngredient.name || $scope.newIngredient.quantity)) {
-        console.log('here');
+    $scope.addIngredient = function(field) {
+      console.log('addIngredient: field = ' + field);
+      if ($scope.newIngredient.name || $scope.newIngredient.quantity) {
         $scope.ingredients.push($scope.newIngredient);
         $scope.newIngredient = {name: ''};
         _.defer(_.partial(
-            _focusIngredient, field, index || $scope.ingredients.length - 1));
+            _focusIngredient, field, $scope.ingredients.length - 1));
       }
     };
 
     $scope.ingredientEnter = function(event, field, index) {
       if (event.which === 13) {
-        if (index === undefined) {
-          $scope.addIngredient(field, 'new');
-          addIngredientBlocked = true;
-          _.delay(function() {addIngredientBlocked = false;}, 1000);
-        } else if (index + 1 === $scope.ingredients.length) {
+        console.log('ingredientEnter: field = ' + field + '; index = ' + index);
+        if (index !== undefined && index + 1 === $scope.ingredients.length) {
           _focusIngredient(field, 'new');
         } else {
           _focusIngredient(field, index + 1);
