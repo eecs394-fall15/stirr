@@ -1,0 +1,25 @@
+{
+  "name": "Pumpkin Soup",
+  "author": "Kapil Garg",
+  "description": "Fall is back! Celebrate with some delicious pumpkin soup!",
+  "ingredients": [
+    {"name": "Pumpkin", "quantity": "2, large"},
+    {"name": "Shallots", "quantity": "2 diced"},
+    {"name": "Vegetable stock", "quantity": "2 cups"},
+    {"name": "Garlic", "quantity": "3 cloves minced"},
+    {"name": "Coconut milk", "quantity": "1 cup"},
+    {"name": "Olive Oil", "quantity": "1 tbsp"},
+    {"name": "Salt and Pepper", "quantity": "To taste"}
+  ],
+  "actions": [
+    {"step": "Preheat oven to 350 degrees."},
+    {"step": "Slice pumpkin into quarters. Roast for 45-60 minutes until skin is easily removed."},
+    {"step": "Let pumpkin cool and then peel away skin. Set aside."},
+    {"step": "In large saucepan, heat olive oil, shallots, and garlic until slightly browned."},
+    {"step": "Add remaining ingredients and bring to a simmer."},
+    {"step": "Puree soup using emulsion blender or regular blender. Serve immediately."}
+  ],
+  "time": {},
+  "image": "pumpkin-soup.jpg",
+  "uuid": "7700F3CE-44B4-4208-A681-406A71947B29"
+}

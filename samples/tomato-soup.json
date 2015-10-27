@@ -1,0 +1,23 @@
+{
+  "name": "Tomato and roasted red pepper soup",
+  "author": "Pooja",
+  "description": "Spice up a classic tomato soup with roasted red peppers.",
+  "ingredients": [
+    {"name": "Red bell peppers", "quantity": "2, large"},
+    {"name": "Plum tomatoes", "quantity": "6 (canned)"},
+    {"name": "Vegetable stock", "quantity": "1.5 cups"},
+    {"name": "Garlic", "quantity": "3 cloves"},
+    {"name": "Olive oil", "quantity": ""},
+    {"name": "Fresh basil leaves", "quantity": "To taste"}
+  ],
+  "actions": [
+    {"step": "Preheat oven to 200 degrees."},
+    {"step": "Place tomatoes, red bell peppers, garlic, and basil on a baking sheet."},
+    {"step": "Drizzle with olive oil and bake for ~30 minutes."},
+    {"step": "Blend together tomatoes, bell peppers, garlic, and basil while adding vegetable stock."},
+    {"step": "Blend until smooth. Serve immediately."}
+  ],
+  "time": {},
+  "image": "tomato-soup.jpg",
+  "uuid": "5e26425eda8cc3f"
+}

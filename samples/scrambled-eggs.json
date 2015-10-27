@@ -1,0 +1,19 @@
+{
+  "name": "Scrambled Eggs",
+  "author": "Kapil Garg",
+  "description": "Start your morning off right with some creamy, delicious eggs",
+  "ingredients": [
+    {"name": "egg", "quantity": "4 large"},
+    {"name": "milk", "quantity": "1/4 cup"},
+    {"name": "butter", "quantity": "2 tablespoons"},
+    {"name": "salt and pepper", "quantity": "to taste"}
+  ],
+  "actions": [
+    {"step": "Beat eggs, milk, salt, and pepper in bowl until blended."},
+    {"step": "Heat butter in nonstick skillet. Pour in egg mixture."},
+    {"step": "Whisky eggs gently, but continuously until cooked."}
+  ],
+  "time": {},
+  "image": "scrambled-eggs.jpg",
+  "uuid": "7700F3CE-44B4-4208-A681-406A71947B29"
+}

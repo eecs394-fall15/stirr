@@ -8,7 +8,11 @@
   padding: 0px;
 }
 
-.stirr-list {
+.padding-10 {
+  padding: 10px!important;
+}
+
+.list {
   margin-bottom: 0px;
 }
 
@@ -88,6 +92,10 @@ label p, label textarea {
   line-height: 20px;
 }
 
+a.item-thumbnail-left p {
+  white-space: normal;
+}
+
 .ingredient {
   width: 50%;
 }
@@ -119,6 +127,12 @@ label p, label textarea {
 #new-recipe-button {
   padding: 0;
   margin: 0;
+}
+
+.searchbar {
+  width: 100%;
+  z-index: 10;
+  top: 0;
 }
 
 .stirr-fake-tabs {
