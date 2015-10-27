@@ -205,7 +205,8 @@ a.item-thumbnail-left p {
   display: block;
 }
 
-.stirr-ingredient input.stirr-ingredient-quantity {
+.stirr-ingredient input.stirr-ingredient-quantity,
+.stirr-ingredient p.stirr-ingredient-quantity {
   font-size: 0.8em;
 }
 
@@ -217,11 +218,15 @@ a.item-thumbnail-left p {
   margin-top: 10px;
 }
 
-.stirr-action textarea {
+.stirr-action textarea, .stirr-action .stirr-action-content {
   display: inline-block;
   width: 90%;
   padding-left: 5px;
   vertical-align: top;
+}
+
+.stirr-edit-form p {
+  white-space: normal;
 }
 
 .stirr-action .stirr-action-header {
@@ -247,3 +252,23 @@ a.item-thumbnail-left p {
 .stirr-delete-btn {
   margin: 0 !important;
 }
+
+.stirr-button-bar-full .button {
+  border-radius: 0 !important;
+  color: #387ef5;
+}
+
+.stirr-button-bar-full .button:hover {
+  color: #387ef5;
+}
+
+.stirr-banner-thumbnail {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  max-width: 80px;
+  max-height: 80px;
+  width: 100%;
+  height: 100%;
+}
+

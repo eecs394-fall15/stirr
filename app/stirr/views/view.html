@@ -8,41 +8,35 @@
         <h3>By {{ recipe.author || 'Anonymous' }}</h3>
       </div>
     </div>
-    <div class="card">
-      <div class="item item-divider">
-        Description
-      </div>
-      <div class="item list">
-        <label class="item item-input">
+    <div class="card stirr-edit-form">
+      <div class="list">
+        <div ng-if="recipe.description" class="item stirr-input-item">
           <p>{{ recipe.description }}</p>
-        </label>
+          <div style="height:8px;"></div>
+        </div>
+        <div class="button-bar stirr-button-bar-full">
+          <a class="button button-light" ng-click="forkRecipe()">Make Variation</a>
+          <a class="button button-light" ng-click="seeVersions()">See Variations</a>
+        </div>
+        <div class="item stirr-input-item">
+          <p class="stirr-input-header">Ingredients</p>
+          <div ng-repeat="ingredient in ingredients" class="stirr-ingredient">
+            <p class="stirr-ingredient-name">{{ ingredient.name }}</p>
+            <p ng-if="ingredient.quantity" class="stirr-ingredient-quantity">{{ ingredient.quantity }}</p>
+            <hr ng-if="$index + 1 !== ingredients.length">
+          </div>
+        </div>
+        <div class="item stirr-input-item">
+          <p class="stirr-input-header">Steps</p>
+          <div ng-repeat="action in actions" class="stirr-action">
+            <div class="stirr-action-header">
+              <p class="stirr-action-number">{{ $index + 1 }}.</p>
+            </div>
+            <div class="stirr-action-content"><p>{{ action.step }}</p></div>
+            <hr ng-if="$index + 1 !== actions.length">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="item item-divider">
-        Ingredients
-      </div>
-      <div class="item list" ng-repeat="ingredient in ingredients">
-        <label class="item item-input">
-          <p class="input-label ingredient">{{ ingredient.name }}</p>
-          <p>{{ ingredient.quantity }}</p>
-        </label>
-      </div>
-    </div>
-    <div class="card">
-      <div class="item item-divider">
-        Instructions
-      </div>
-      <div class="item list" ng-repeat="action in actions">
-        <label class="item item-input">
-          <p class="input-label">Step {{ $index + 1 }}:</p>
-          <p>{{ action.step }}</p>
-        </label>
-      </div>
-    </div>
-    <div class="button-bar">
-      <a class="button button-positive" ng-click="forkRecipe()">Create a Copy</a>
-      <a class="button button-positive" ng-click="seeVersions()">See More Versions</a>
     </div>
   </div>
 </div>
