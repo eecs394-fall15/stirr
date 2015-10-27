@@ -1,0 +1,29 @@
+{
+  "name": "Caesar Salad",
+  "author": "Kapil Garg",
+  "description": "I love caesar salad. Et tu, Brute?",
+  "ingredients": [
+    {"name": "egg yolk", "quantity": "1"},
+    {"name": "fresh lemon juice", "quantity": "3 tablespoons"},
+    {"name": "garlic", "quantity": "1 tablespoon, minced"},
+    {"name": "Worcestershire sauce", "quantity": "1/2 teaspoon"},
+    {"name": "red pepper flakes", "quantity": "1/4 teaspoon"},
+    {"name": "Dijon mustard", "quantity": "1 tablespoon"},
+    {"name": "anchovy fillets", "quantity": "2 mashed"},
+    {"name": "vegetable oil", "quantity": "1 cup"},
+    {"name": "extra-virgin olive oil", "quantity": "1/3 cup"},
+    {"name": "head romaine lettuce", "quantity": "1 large"},
+    {"name": "croutons", "quantity": "2 cups"},
+    {"name": "Freshly grated Parmesan", "quantity": "To taste"},
+    {"name": "salt and pepper", "quantity": "To taste"}
+  ],
+  "actions": [
+    {"step": "Whisk together egg, lemon juice, garlic, Worcestershire, pepper flakes, mustard, and anchovies."},
+    {"step": "Slowly whiskey in oil to create emulsification."},
+    {"step": "Clean and cut lettuce into 1-2in pieces."},
+    {"step": "Drizzle dressing on lettuce. Add croutons, salt, pepper, and cheese to taste."}
+  ],
+  "time": {},
+  "image": "caesar-salad.jpg",
+  "uuid": "7700F3CE-44B4-4208-A681-406A71947B29"
+}
