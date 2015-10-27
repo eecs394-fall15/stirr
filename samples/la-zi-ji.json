@@ -1,0 +1,34 @@
+{
+  "name": "La Zi Ji (Firecracker Chicken)",
+  "author": "Adrien",
+  "description": "A firey Sichuan dish to spice up your life.",
+  "ingredients": [
+    {"name": "Chicken thighs, cut into chunks", "quantity": "3"},
+    {"name": "Shaoxing rice wine", "quantity": "A glug"},
+    {"name": "Chili pepper flakes", "quantity": "As needed"},
+    {"name": "Ginger, grated", "quantity": "A knob"},
+    {"name": "Corn starch", "quantity": "As needed"},
+    {"name": "Dried chili peppers", "quantity": "A handful"},
+    {"name": "Sichuan peppercorns", "quantity": "A spoonful"},
+    {"name": "Garlic cloves, roughly chopped", "quantity": "3"},
+    {"name": "Ginger, finely chopped", "quantity": "A knob"},
+    {"name": "Dark soy sauce", "quantity": "A splash"},
+    {"name": "Sugar", "quantity": "As preferred"},
+    {"name": "Green onions, chopped", "quantity": "2"}
+  ],
+  "actions": [
+    {"step": "Marinate the chicken in cooking wine, ginger, black pepper, and chili pepper flakes as well as a generous amount of salt. Generously salting the meat here is necessary for the flavor to permeate."},
+    {"step": "After marinating the chicken for a few hours (ideally overnight), heat enough frying oil to cover half of a chicken chunk just below the smoke point."},
+    {"step": "Blotting the excess moisture on a paper towel, dredge the chicken chunks in salted corn starch."},
+    {"step": "Deep fry the chicken chunks to a golden brown in batches. With sufficiently small chunks, a quick fry should be enough to cook the chunks through while they rest."},
+    {"step": "Set aside the chicken. Bring stir frying oil up to a medium temperature in a wok and add the dried chili peppers and sichuan peppecorns."},
+    {"step": "After allowing the spices to infuse into the oil (the oil should turn red), turn up the heat and add the garlic and ginger."},
+    {"step": "When the aromatics grow fragrant, add the chicken."},
+    {"step": "Stir fry briefly and add the dark soy sauce and sugar."},
+    {"step": "When the moisture is mostly gone, finish with the green onions."},
+    {"step": "Serve hot with something to counter the spice."}
+  ],
+  "time": {},
+  "image": "la-zi-ji.jpg",
+  "uuid": "147c1cd088644efb"
+}

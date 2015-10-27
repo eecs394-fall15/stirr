@@ -218,4 +218,67 @@ angular
         });
       }
     });
+
+    /**
+     * if recipe already exists
+     *   confirm
+     *   if parent recipe
+     *     if children exist
+     *       disassociate author and uuid
+     *       return to home
+     *     else
+     *       delete recipe
+     *       return to home
+     *   else
+     *     delete recipe
+     *     return to home
+     * else
+     *   if new recipe
+     *     return to home
+     *   else
+     *     return to base recipe view
+     */
+    $scope.delete = function() {
+      if ($scope.recipe.id) {
+        if (window.confirm('Are you sure?')) {
+          if ($scope.recipe.parentId) {
+            $scope.recipe.delete().then(function() {
+              supersonic.ui.layers.popAll();
+            });
+          } else {
+            Recipe.findAll().then(function(recipes) {
+              recipes = recipes.filter(function(recipe) {
+                return recipe.parentId === $scope.recipe.id;
+              });
+              if (recipes.length) {
+                $scope.recipe.author = null;
+                $scope.recipe.uuid = null;
+                $scope.recipe.save().then(function() {
+                  supersonic.ui.layers.popAll();
+                });
+              } else {
+                $scope.recipe.delete().then(function() {
+                  supersonic.ui.layers.popAll();
+                });
+              }
+            });
+          }
+        }
+      } else {
+        var pop = function() {
+          if (!$scope.recipe.id && !$scope.recipe.parentId) {
+            supersonic.ui.layers.popAll();
+          } else {
+            supersonic.ui.layers.pop();
+          }
+        };
+        if (changed) {
+          if (window.confirm('Are you sure?')) {
+            pop();
+          }
+        } else {
+          pop();
+        }
+      }
+    };
   });

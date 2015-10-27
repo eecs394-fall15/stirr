@@ -1,0 +1,29 @@
+{
+  "name": "Butternut squash sauce",
+  "author": "Pooja",
+  "description": "This is a creamy butternut squash sauce that tastes delicious over ravioli.",
+  "ingredients": [
+    {"name": "Butternut squash", "quantity": "1 medium"},
+    {"name": "Olive oil", "quantity": "1 tbsp"},
+    {"name": "Dried sage", "quantity": "1/2 tsp"},
+    {"name": "Garlic with peel on", "quantity": "5 cloves"},
+    {"name": "Half and half", "quantity": "1 cup"},
+    {"name": "Ravioli (or any pasta)", "quantity": "8 oz"},
+    {"name": "Salt and pepper", "quantity": "To taste"},
+    {"name": "Walnuts, parmesan cheese", "quantity": "To taste"}
+  ],
+  "actions": [
+    {"step": "Preheat oven to 375 degrees."},
+    {"step": "Peel butternut squash and scoop out seeds."},
+    {"step": "Cut into 2 inch chunks. Toss with oil, sage, salt, and pepper."},
+    {"step": "Scatter unpeeled garlic around squash on baking sheet."},
+    {"step": "Bake ~40 minutes, until squash is very tender."},
+    {"step": "Remove skin from garlic."},
+    {"step": "Puree/blend squash and garlic, while adding half and half and 1-2 cups of water."},
+    {"step": "Continue to blend sauce until smooth, adding water if necessary."},
+    {"step": "Pour sauce over cooked pasta and add toppings as desired."}
+  ],
+  "time": {},
+  "image": "butternut-squash-sauce.jpg",
+  "uuid": "5e26425eda8cc3f"
+}
