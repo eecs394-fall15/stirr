@@ -44,6 +44,17 @@ angular
       });
     };
 
+    $scope.seeVersions = function() {
+      console.log($scope.recipe);
+      var versionView = new supersonic.ui.View('stirr#version-view');
+      var options = {
+        params: {
+          parentId: $scope.recipe.parentId || $scope.recipe.id
+        }
+      };
+      supersonic.ui.modal.show(versionView, options);
+    };
+
     var _edit = function() {
       var view = new supersonic.ui.View('stirr#edit');
       supersonic.ui.layers.push(view, {
