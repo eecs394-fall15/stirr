@@ -11,7 +11,7 @@
   "actions": [
     {"step": "Beat eggs, milk, salt, and pepper in bowl until blended."},
     {"step": "Heat butter in nonstick skillet. Pour in egg mixture."},
-    {"step": "Whisky eggs gently, but continuously until cooked."},
+    {"step": "Whisky eggs gently, but continuously until cooked."}
   ],
   "time": {},
   "image": "scrambled-eggs.jpg",
