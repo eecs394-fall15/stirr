@@ -1,0 +1,32 @@
+{
+  "parentId": "japanese-curry.json",
+  "name": "Japanese Curry",
+  "author": "Adrien",
+  "description": "Spicy, onion-y goodness straight from Japan",
+  "ingredients": [
+    {"name": "Chicken thighs", "quantity": "3"},
+    {"name": "Onions, sliced into strips", "quantity": "2"},
+    {"name": "Dried chili peppers", "quantity": "At your discretion"},
+    {"name": "Chicken stock or water", "quantity": "As needed"},
+    {"name": "Carrots, roughly chopped", "quantity": "3"},
+    {"name": "Potatoes, roughly chopped", "quantity": "2"},
+    {"name": "Japanese curry blocks", "quantity": "As needed"},
+    {"name": "Soy sauce", "quantity": "Optional"}
+  ],
+  "actions": [
+    {"step": "Brown the chicken in a stainless steel stock pot on high heat with a splash of oil, salt, and pepper."},
+    {"step": "Remove the chicken from the pot and reserve. Don't worry about brown bits stuck to the bottom."},
+    {"step": "Add the onions and the chili peppers along with another splash of oil and salt."},
+    {"step": "Sautee the onions until brown, adding chicken stock or water if the contents of the pot are too dry."},
+    {"step": "Add reserved chicken, carrots, and potatoes."},
+    {"step": "Sautee briefly, then cover with water, measuring how much is added."},
+    {"step": "Bring water to a boil, skimming off any foam that rises to the top."},
+    {"step": "When the carrots are soft, add curry blocks according to the measured amount of water."},
+    {"step": "Adjust the thickness as needed with water."},
+    {"step": "Adjust the seasoning with salt or soy sauce."},
+    {"step": "Serve over hot rice."}
+  ],
+  "time": {},
+  "image": "honey-japanese-curry.jpg",
+  "uuid": "147c1cd088644efb"
+}
