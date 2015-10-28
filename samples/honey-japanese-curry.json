@@ -1,30 +1,28 @@
 {
-  "parentId": "japanese-curry.json",
-  "name": "Japanese Curry",
+  "parentFilename": "japanese-curry.json",
+  "name": "Honey Japanese Curry",
   "author": "Adrien",
-  "description": "Spicy, onion-y goodness straight from Japan",
+  "description": "Spicy, sweet, floral, vegiterian, onion-y goodness, definitely not from Vermont.",
   "ingredients": [
-    {"name": "Chicken thighs", "quantity": "3"},
     {"name": "Onions, sliced into strips", "quantity": "2"},
     {"name": "Dried chili peppers", "quantity": "At your discretion"},
-    {"name": "Chicken stock or water", "quantity": "As needed"},
+    {"name": "Vegetable stock or water", "quantity": "As needed"},
     {"name": "Carrots, roughly chopped", "quantity": "3"},
     {"name": "Potatoes, roughly chopped", "quantity": "2"},
     {"name": "Japanese curry blocks", "quantity": "As needed"},
-    {"name": "Soy sauce", "quantity": "Optional"}
+    {"name": "Honey", "quantity": "3 big spoonfuls"},
+    {"name": "Apple slices", "quantity": "optional"}
   ],
   "actions": [
-    {"step": "Brown the chicken in a stainless steel stock pot on high heat with a splash of oil, salt, and pepper."},
-    {"step": "Remove the chicken from the pot and reserve. Don't worry about brown bits stuck to the bottom."},
     {"step": "Add the onions and the chili peppers along with another splash of oil and salt."},
-    {"step": "Sautee the onions until brown, adding chicken stock or water if the contents of the pot are too dry."},
-    {"step": "Add reserved chicken, carrots, and potatoes."},
+    {"step": "Sautee the onions until brown, adding vegetable stock or water if the contents of the pot are too dry."},
+    {"step": "Add carrots and potatoes."},
     {"step": "Sautee briefly, then cover with water, measuring how much is added."},
     {"step": "Bring water to a boil, skimming off any foam that rises to the top."},
     {"step": "When the carrots are soft, add curry blocks according to the measured amount of water."},
-    {"step": "Adjust the thickness as needed with water."},
-    {"step": "Adjust the seasoning with salt or soy sauce."},
-    {"step": "Serve over hot rice."}
+    {"step": "Add honey and simmer until the sauce reaches the desired consistency."},
+    {"step": "Adjust the seasoning with salt."},
+    {"step": "Serve over hot rice. Garnish with apple slices."}
   ],
   "time": {},
   "image": "honey-japanese-curry.jpg",
