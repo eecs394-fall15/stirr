@@ -1,0 +1,23 @@
+{
+  "name": "Apple Balsamic Chicken",
+  "author": "Benjamin",
+  "description": "Slow Cooker Apple Balsamic Chicken- full of taste, low on time, apple jelly, apple juice and balsamic vinegar give this dish loads of flavor! Serve over buttered rice or egg noodles.",
+  "ingredients": [
+    {"name": "skinless chicken breasts", "quantity": "4 boneless"},
+    {"name": "apple juice", "quantity": "3/4 cup"},
+    {"name": "apple jelly", "quantity": "2"},
+    {"name": "garlic powder", "quantity": "3-5"},
+    {"name": "teaspoon smoked paprika", "quantity": "1 tsp"},
+    {"name": "teaspoon ground black pepper", "quantity": "1/4 tsp"},
+    {"name": "tablespoons cornstarch", "quantity": "1/3 - 1/2 cup"}
+  ],
+  "actions": [
+    {"step": "In your slow cooker, whisk together apple juice through ground black pepper. Add chicken breasts, turning once to coat."},
+    {"step": "Set slow cooker to high for 4 hours."},
+    {"step": "At four hours, skim any fats from the top of the mixture."},
+    {"step": "Serve hot over rice or egg noddles. Garnish with parsley, if desired."}
+  ],
+  "time": {},
+  "image": "apple-balsamic-chicken.jpg",
+  "uuid": "2233FB00-5861-4FD0-A386-2BD28FEACD3B"
+}

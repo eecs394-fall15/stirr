@@ -1,0 +1,23 @@
+{
+  "name": "White Queso Dip with Chorizo",
+  "author": "Benjamin",
+  "description": "The BEST cheese dip you will ever make!",
+  "ingredients": [
+    {"name": "white onion, finely minced", "quantity": "4 cups"},
+    {"name": "whole milk", "quantity": "3/4 cup"},
+    {"name": "white American cheese", "quantity": "2"},
+    {"name": "Monterey Jack or Pepper Jack cheese", "quantity": "3-5"},
+    {"name": "links of Chorizo sausage", "quantity": "1 tsp"},
+    {"name": "teaspoon sea salt", "quantity": "1/4 tsp"},
+    {"name": "tablespoon unsalted butter", "quantity": "1/3 - 1/2 cup"}
+  ],
+  "actions": [
+    {"step": "Place all cheeses and onion into a food processor and pulse several times to mix. The finer the mixture, the cleaner and smoother it will melt."},
+    {"step": "In a medium sauce pan, melt butter and then add the cheese mixture through whole milk over medium heat. Continuously whisk the mixture until it is fully melted and smooth (maybe a few small bumps from the onions). Do not heat too high or keep it over heat."},
+    {"step": "Whisk in salt and pepper."},
+    {"step": "While still hot, transfer cheese to a serving bowl, top with diced chorizo (some will sink). Garnish with jalapeno. You can stir in the sausage to combine. Serve with tortilla chips."}
+  ],
+  "time": {},
+  "image": "white-queso-dip-with-chorizo.jpg",
+  "uuid": "2233FB00-5861-4FD0-A386-2BD28FEACD3B"
+}
