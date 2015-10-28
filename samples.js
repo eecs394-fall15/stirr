@@ -38,7 +38,7 @@ var addParentToRecipe = function(fileRecipe) {
   var parentFilename = fileRecipe.file.parentFilename;
   if (parentFilename) {
     var parentFileRecipe = filenameFileRecipe['samples/' + parentFilename];
-    fileRecipe.recipe.set('parentId', parentFileRecipe.recipe.get('objectId'));
+    fileRecipe.recipe.set('parentId', parentFileRecipe.recipe.id);
     fileRecipe.recipe.save().then(function() {
       console.log(fileRecipe.file.name + ' is now a child of ' +
                   parentFileRecipe.file.name);
