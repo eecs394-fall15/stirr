@@ -10,6 +10,8 @@ angular
     $scope.time = null;
     $scope.name = null;
     $scope.url = '/food-placeholder.png';
+    $scope.newIngredient = {name: ''};
+    $scope.newAction = {step: ''};
 
     var deviceReady = false;
 
@@ -132,38 +134,6 @@ angular
       });
     };
 
-    if (steroids.view.params.id) {
-      Recipe.find(steroids.view.params.id).then(_display, _alertError);
-    } else if (steroids.view.params.baseId) {
-      Recipe.find(steroids.view.params.baseId).then(function(recipe) {
-        _whenDeviceReady(function() {
-          _display(new Recipe({
-            description: recipe.description,
-            ingredients: recipe.ingredients,
-            actions: recipe.actions,
-            time: recipe.time,
-            image: recipe.image,
-            uuid: device.uuid,
-            parentId: recipe.parentId || recipe.id
-          }));
-        });
-      }, _alertError);
-    } else {
-      _whenDeviceReady(function() {
-        _display(new Recipe({
-          uuid: device.uuid
-        }));
-      });
-    }
-
-    $scope.addIngredient = function() {
-      $scope.ingredients.push({'name': '', 'quantity': ''});
-    };
-
-    $scope.addAction = function() {
-      $scope.actions.push({'step': ''});
-    };
-
     /**
      * Creates a new array for ingredients/actions without
      * blank object entries. Object is blank if key value is empty string.
@@ -279,4 +249,99 @@ angular
         }
       }
     };
+
+    var _focusIngredient = function(field, index) {
+      var ingredient = index === 'new' ? $scope.newIngredient :
+          $scope.ingredients[index];
+      field = ingredient.quantity === undefined ? 'ingredient' : field;
+      var element = document.getElementById(field + '-' + index.toString());
+      element.focus();
+    };
+
+    $scope.addIngredient = function(field) {
+      if ($scope.newIngredient.name || $scope.newIngredient.quantity) {
+        $scope.ingredients.push($scope.newIngredient);
+        $scope.newIngredient = {name: ''};
+        _.defer(_.partial(
+            _focusIngredient, field, $scope.ingredients.length - 1));
+      }
+    };
+
+    $scope.ingredientEnter = function(event, field, index) {
+      if (event.which === 13) {
+        if (index + 1 === $scope.ingredients.length) {
+          _focusIngredient(field, 'new');
+        } else {
+          _focusIngredient(field, index + 1);
+        }
+      }
+    };
+
+    $scope.ingredientUp = function(index) {
+      if (index > 0) {
+        var temp = $scope.ingredients[index];
+        $scope.ingredients[index] = $scope.ingredients[index - 1];
+        $scope.ingredients[index - 1] = temp;
+      }
+    }
+
+    var _focusAction = function(index) {
+      var action = index === 'new' ? $scope.newAction : $scope.actions[index];
+      var element = document.getElementById('action-' + index.toString());
+      element.focus();
+    };
+
+    $scope.addAction = function() {
+      if ($scope.newAction.step) {
+        $scope.actions.push($scope.newAction);
+        $scope.newAction = {step: ''};
+        _.defer(_.partial(
+            _focusAction, $scope.actions.length - 1));
+      }
+    };
+
+    $scope.actionEnter = function(e, index) {
+      if (event.which === 13) {
+        event.preventDefault();
+        if (index + 1 === $scope.actions.length) {
+          _focusAction('new');
+        } else {
+          _focusAction(index + 1);
+        }
+      }
+    };
+
+    $scope.actionUp = function(index) {
+      if (index > 0) {
+        var temp = $scope.actions[index];
+        $scope.actions[index] = $scope.actions[index - 1];
+        $scope.actions[index - 1] = temp;
+      }
+    }
+
+    supersonic.ui.views.current.params.onValue(function(params) {
+      if (params.id) {
+        Recipe.find(params.id).then(_display, _alertError);
+      } else if (params.baseId) {
+        Recipe.find(params.baseId).then(function(recipe) {
+          _whenDeviceReady(function() {
+            _display(new Recipe({
+              description: recipe.description,
+              ingredients: recipe.ingredients,
+              actions: recipe.actions,
+              time: recipe.time,
+              image: recipe.image,
+              uuid: device.uuid,
+              parentId: recipe.parentId || recipe.id
+            }));
+          });
+        }, _alertError);
+      } else {
+        _whenDeviceReady(function() {
+          _display(new Recipe({
+            uuid: device.uuid
+          }));
+        });
+      }
+    });
   });

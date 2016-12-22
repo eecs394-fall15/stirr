@@ -58,7 +58,7 @@
   margin: 10px 10px 10px 0;
   border: none !important;
   border-radius: 50%;
-  background: #387ef5;
+  background-color: #387ef5;
   line-height: 60px;
   text-align: center;
   font-size: 25px;
@@ -175,4 +175,120 @@ a.item-thumbnail-left p {
 
 .stirr-spacer {
   height: 50px;
+}
+
+.stirr-edit-form {
+  margin: 0;
+}
+
+.stirr-input-by {
+  width: 2.0em;
+}
+
+.stirr-input-item {
+  padding: 12px 16px 4px 16px;
+}
+
+.stirr-input-item input {
+  padding: 0;
+  width: 100%;
+}
+
+.stirr-input-item .stirr-input-header {
+  color: #387ef5;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.stirr-ingredient button.stirr-ingredient-btn,
+.stirr-action button.stirr-action-btn {
+  font-size: 0.75em;
+  color: white;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #387ef5;
+  text-align: center;
+  border: none !important;
+}
+
+.stirr-ingredient button.stirr-ingredient-btn {
+  margin-right: 5px;
+  float: right;
+  position: relative;
+  top: 5px;
+}
+
+.stirr-ingredient {
+  display: block;
+  line-height: 30px;
+}
+
+.stirr-ingredient {
+  vertical-align: middle;
+  clear: both;
+}
+
+.stirr-ingredient input {
+  display: inline-block;
+  height: 30px;
+}
+
+.stirr-ingredient input.stirr-ingredient-name {
+  padding-right: 60px;
+}
+
+.stirr-ingredient input.stirr-ingredient-quantity {
+  display: none;
+  font-size: 0.8em;
+}
+
+.stirr-ingredient.stirr-expanded input.stirr-ingredient-quantity {
+  display: block;
+}
+
+.stirr-less-right-pad {
+  padding-right: 11px;
+}
+
+.stirr-action {
+  padding-top: 5px;
+}
+
+.stirr-edit-form .stirr-action hr {
+  margin-top: 10px;
+}
+
+.stirr-action textarea {
+  display: inline-block;
+  width: 90%;
+  height: 49px;
+  padding-left: 5px;
+  vertical-align: top;
+}
+
+.stirr-action .stirr-action-header {
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+}
+
+.stirr-action .stirr-action-header .stirr-action-number {
+  color: #387ef5;
+  font-weight: bold;
+  margin: 2px;
+}
+
+.stirr-edit-form hr {
+  margin: 5px 0 5px 0;
+  border-bottom: solid 1px #ddd;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.stirr-delete-btn {
+  margin: 0 !important;
 }
