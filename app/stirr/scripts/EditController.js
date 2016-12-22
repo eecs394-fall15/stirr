@@ -132,30 +132,6 @@ angular
       });
     };
 
-    if (steroids.view.params.id) {
-      Recipe.find(steroids.view.params.id).then(_display, _alertError);
-    } else if (steroids.view.params.baseId) {
-      Recipe.find(steroids.view.params.baseId).then(function(recipe) {
-        _whenDeviceReady(function() {
-          _display(new Recipe({
-            description: recipe.description,
-            ingredients: recipe.ingredients,
-            actions: recipe.actions,
-            time: recipe.time,
-            image: recipe.image,
-            uuid: device.uuid,
-            parentId: recipe.parentId || recipe.id
-          }));
-        });
-      }, _alertError);
-    } else {
-      _whenDeviceReady(function() {
-        _display(new Recipe({
-          uuid: device.uuid
-        }));
-      });
-    }
-
     $scope.addIngredient = function() {
       $scope.ingredients.push({'name': '', 'quantity': ''});
     };
@@ -216,6 +192,32 @@ angular
     $scope.change = function() {
       changed = true;
     };
+
+    supersonic.ui.views.current.params.onValue(function(params) {
+      if (params.id) {
+        Recipe.find(params.id).then(_display, _alertError);
+      } else if (params.baseId) {
+        Recipe.find(params.baseId).then(function(recipe) {
+          _whenDeviceReady(function() {
+            _display(new Recipe({
+              description: recipe.description,
+              ingredients: recipe.ingredients,
+              actions: recipe.actions,
+              time: recipe.time,
+              image: recipe.image,
+              uuid: device.uuid,
+              parentId: recipe.parentId || recipe.id
+            }));
+          });
+        }, _alertError);
+      } else {
+        _whenDeviceReady(function() {
+          _display(new Recipe({
+            uuid: device.uuid
+          }));
+        });
+      }
+    });
 
     /**
      * if recipe already exists
